@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nuestras Habitaciones - Hotel Tambococha</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&amp;family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d48311",
+                        "sage": "#4a5d4e",
+                        "earth-brown": "#5c4d3c",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221a10",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Fraunces", "serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f8f7f6;
+            color: #221a10;
+        }
+        h1, h2, h3 {
+            font-family: 'Fraunces', serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-[#221a10]">
+<header class="sticky top-0 z-50 w-full bg-background-light/95 backdrop-blur-sm border-b border-[#221a10]/5 px-6 lg:px-20">
+<div class="max-w-7xl mx-auto flex items-center justify-between h-20">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined">mountain_flag</span>
+</div>
+<div class="flex flex-col leading-tight">
+<span class="text-xl font-bold tracking-tight font-serif">Hotel Tambococha</span>
+<span class="text-[10px] uppercase tracking-[0.15em] font-display font-medium text-[#221a10]/60">Catacocha - Ecuador</span>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Hotel</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Actividades</a>
+<a class="text-sm font-medium text-primary border-b-2 border-primary" href="#">Habitaciones</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Reservas</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Ubicación</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Contacto</a>
+</nav>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-4">
+<a aria-label="Facebook" class="p-2 hover:text-primary transition-colors" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+</a>
+<a aria-label="Instagram" class="p-2 hover:text-primary transition-colors" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+</div>
+<a class="bg-sage hover:bg-[#3d4d41] text-white px-6 py-2.5 rounded-lg text-sm font-bold tracking-wider font-display transition-colors" href="#">
+                RESERVAR AHORA
+            </a>
+</div>
+</div>
+</header>
+<main class="min-h-screen">
+<section class="py-16 md:py-24 px-6 bg-background-light text-center">
+<div class="max-w-3xl mx-auto">
+<h1 class="text-4xl md:text-6xl font-bold mb-6 text-[#221a10]">Nuestras Habitaciones</h1>
+<p class="text-lg md:text-xl text-[#221a10]/70 font-display leading-relaxed">
+                Descubre la tranquilidad y el confort en el corazón de Catacocha. Espacios diseñados para tu descanso con vistas inigualables a los Andes ecuatorianos.
+            </p>
+</div>
+</section>
+<div class="max-w-7xl mx-auto px-6 mb-12">
+<div class="flex items-center justify-center gap-8 border-b border-[#221a10]/10 py-4">
+<button class="text-sm font-bold tracking-widest uppercase text-primary border-b-2 border-primary pb-4 -mb-[18px]">Todas</button>
+<button class="text-sm font-bold tracking-widest uppercase text-[#221a10]/50 hover:text-primary transition-colors pb-4">Simples</button>
+<button class="text-sm font-bold tracking-widest uppercase text-[#221a10]/50 hover:text-primary transition-colors pb-4">Matrimoniales</button>
+</div>
+</div>
+<section class="max-w-7xl mx-auto px-6 pb-24">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+<div class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[#221a10]/5">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img alt="Habitación simple acogedora con cama individual y luz natural" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-7r1guFW3xZnhgEnUN6DTUgp_YcSFJew7c_wE-rQcozvknHPY4fkh5JT4NB3WjSa9B5f1VfwEb4GFCFZSWugO1x8-3B9E1kdVNbWU3SvuagrUda96oiODLQqs_psLrjxRR600ghsvmKv-N5pHgTA_Ggv2bWgA4plpdWWa8NKZo5Mjt1b9MoeADI_IX0ZZCJtkwZy0Gp3EwJiNQVyl0f7V3-IOfy_X22GaOhKsRTughuftaXXKilagnL9aFFYY9RytLnv03mhgy2Y"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm">
+<span class="text-xs font-bold text-sage uppercase tracking-wider">Habitación Simple</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-2xl font-bold">Standard Single 101</h3>
+<p class="text-primary font-bold text-xl">$35<span class="text-sm text-[#221a10]/40 font-normal font-display">/noche</span></p>
+</div>
+<div class="flex items-center gap-4 mb-6 text-[#221a10]/60">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">wifi</span>
+<span class="text-xs font-display">Wifi</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">shower</span>
+<span class="text-xs font-display">Baño Privado</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors font-display">
+                        Ver Detalles
+                    </button>
+</div>
+</div>
+<div class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[#221a10]/5">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img alt="Habitación simple moderna con escritorio y decoración minimalista" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgEiJzjSNMjY_pc8isMdk5frINcde0_y4jj9MMJvSKQv9GTKO-JG_9maTXJ0SRLBQe8RzOw583xBvTfENNmJaUItKWwntPySXSf0Rn1cyFSPbqDl8fucN0FKTMjGV3aUelLJfe36iKt7_UaSSK9fsCdfqnb4A_mJnA_mCMt76O-pjBzdUSnS4xyWqtJxzzoKskalkOM_4jv3yj172Jvi-uyNl0c5Uk2cQ8d2nJVaAisItXPKoUVX-hR7Jizf3w7jJAj92hHFr0X2A"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm">
+<span class="text-xs font-bold text-sage uppercase tracking-wider">Habitación Simple</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-2xl font-bold">Standard Single 102</h3>
+<p class="text-primary font-bold text-xl">$35<span class="text-sm text-[#221a10]/40 font-normal font-display">/noche</span></p>
+</div>
+<div class="flex items-center gap-4 mb-6 text-[#221a10]/60">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">wifi</span>
+<span class="text-xs font-display">Wifi</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">shower</span>
+<span class="text-xs font-display">Baño Privado</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors font-display">
+                        Ver Detalles
+                    </button>
+</div>
+</div>
+<div class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[#221a10]/5">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img alt="Habitación matrimonial premium con cama King y vista panorámica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA669wn4b2YfZ53Li4KGm-rqTaNUo1U9N3R01Hb9RitknQ-QERSH3VleQJf8XjL9Yw-tPfKieE2MNsp4IaVJ1R6qDGC--Bofg3wVwVJibsQmJUOiPizKk1jGwYbuk_VJtpMo5EfWJT5L_y9GNnqhLL_4TNm0cJEX1lW0Y6_mS6gWbPu6WT4VWv20Y_2RbVNI1AybytCeX5G9cGp5c0RTfcprNxQQ03jKQHrr-36cYGQuyQr17xR1T0A1UJhCEvJyy4gfnnBbJLAFps"/>
+<div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full shadow-sm">
+<span class="text-xs font-bold uppercase tracking-wider">Matrimonial Premium</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-2xl font-bold">Suite Panorámica 201</h3>
+<p class="text-primary font-bold text-xl">$65<span class="text-sm text-[#221a10]/40 font-normal font-display">/noche</span></p>
+</div>
+<div class="flex items-center gap-4 mb-6 text-[#221a10]/60">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">landscape</span>
+<span class="text-xs font-display">Vista Montaña</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">wifi</span>
+<span class="text-xs font-display">Wifi Alta Velocidad</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors font-display">
+                        Ver Detalles
+                    </button>
+</div>
+</div>
+<div class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[#221a10]/5">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img alt="Habitación simple rústica con acabados de madera" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxxpfq6q1sx7dVrT0v8gKZ3jhatoErYM-3ngXrYC3R4LsQtrvQcMV3a1mb_SMhYwuClYrswRv39_UeNQYiBqENFcuZOsLGzFq7qegpnnZf_K_9UWwo7eqmuqUNI5BqiQx9YlXG5NnVoGzASjH2omwC-jrFUVqeXOCNuVflHHqQO3Ndua3bHOtzATU6yPXg2zaaresyENGYCmj9W_qIluERt5Z1C8CMEeenYGgLfEDOxhRTcr-jufLOLWV_CAM5LOK8GY3Y3HDCigg"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm">
+<span class="text-xs font-bold text-sage uppercase tracking-wider">Habitación Simple</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-2xl font-bold">Traditional Single 103</h3>
+<p class="text-primary font-bold text-xl">$35<span class="text-sm text-[#221a10]/40 font-normal font-display">/noche</span></p>
+</div>
+<div class="flex items-center gap-4 mb-6 text-[#221a10]/60">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">wifi</span>
+<span class="text-xs font-display">Wifi</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">shower</span>
+<span class="text-xs font-display">Baño Privado</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors font-display">
+                        Ver Detalles
+                    </button>
+</div>
+</div>
+<div class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[#221a10]/5">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img alt="Habitación simple luminosa con cama confortable y ventanal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhnz-zBfna4H2ZSH4DTHaZKXlZrIkVlXmLdibtJOZFBpHrfkSDDRLUHlqjXvcfXAD5Eb_JX67Og6UIiuxrJjALyxIMdmq5NaY2ERc2O7uiq8YhHNGiNpJ5w0tRIDPe2FEIF9DOnXn5IkkNmrgFnr7SsmEtI5pzCJR0hs3aPJiRSzAPWIV-33gmlQg73kLuOZj_Q-RIsx9QuJ8wA5qqN6tmIQtkagKis8268LG1tiRG5pGyZrguWK6fLXbAlbLzvrNcSZz9Qax-p7Q"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm">
+<span class="text-xs font-bold text-sage uppercase tracking-wider">Habitación Simple</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-2xl font-bold">Standard Single 104</h3>
+<p class="text-primary font-bold text-xl">$35<span class="text-sm text-[#221a10]/40 font-normal font-display">/noche</span></p>
+</div>
+<div class="flex items-center gap-4 mb-6 text-[#221a10]/60">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">wifi</span>
+<span class="text-xs font-display">Wifi</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">shower</span>
+<span class="text-xs font-display">Baño Privado</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors font-display">
+                        Ver Detalles
+                    </button>
+</div>
+</div>
+<div class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[#221a10]/5">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img alt="Habitación matrimonial clásica con decoración elegante y amplio espacio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm98KO3knI1ojvzvqPsaC-LYKEqg6_mvcCxqjeF6McC9opFlM4h0qFCFbtMTuuXotv4iQlDNe4O12mv8sRUTQKVHjD0D0TVNpPLAx6xYxq873nQ46LOZbr9XXXa90Oq_On1ppfgHcTlAeTG4iUbuW2pCRxIJpM6YnBiv4m1MQ7tsmWnrQA_FwX2DZfF9RcONlixpVVDbF6pC5BmYI60_jNttJztPR56xUd9f5B-4D-tBBmVXS1UUwFJbjUkxnN-dhN_HWivRRZwoA"/>
+<div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full shadow-sm">
+<span class="text-xs font-bold uppercase tracking-wider">Matrimonial Confort</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-2xl font-bold">Suite Superior 202</h3>
+<p class="text-primary font-bold text-xl">$55<span class="text-sm text-[#221a10]/40 font-normal font-display">/noche</span></p>
+</div>
+<div class="flex items-center gap-4 mb-6 text-[#221a10]/60">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">tv</span>
+<span class="text-xs font-display">TV Cable</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">shower</span>
+<span class="text-xs font-display">Baño Suite</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors font-display">
+                        Ver Detalles
+                    </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-earth-brown text-white pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined">mountain_flag</span>
+</div>
+<div class="flex flex-col leading-tight">
+<span class="text-lg font-bold tracking-tight font-serif">Hotel Tambococha</span>
+<span class="text-[9px] uppercase tracking-[0.15em] font-display font-medium text-white/80">Catacocha - Ecuador</span>
+</div>
+</div>
+<p class="text-sm text-white/80 leading-relaxed font-display">
+                Ubicado en el corazón de los Andes, ofrecemos una experiencia de hospitalidad única en Catacocha, fusionando cultura y descanso.
+            </p>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-white uppercase tracking-widest text-xs">Explorar</h4>
+<ul class="space-y-4 text-sm font-display text-white/80">
+<li><a class="hover:text-primary transition-colors" href="#">Habitaciones</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Nuestro Hotel</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Tours &amp; Actividades</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Gastronomía</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-white uppercase tracking-widest text-xs">Contacto</h4>
+<ul class="space-y-4 text-sm font-display text-white/80">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span>Catacocha, Loja, Ecuador</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">call</span>
+<span>+593 999 888 777</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">mail</span>
+<span>info@tambococha.com.ec</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-white uppercase tracking-widest text-xs">Siguenos</h4>
+<div class="flex gap-4">
+<a aria-label="Facebook" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+</a>
+<a aria-label="Instagram" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-display text-white/60 uppercase tracking-widest">
+<p>© 2024 Hotel Tambococha. Todos los derechos reservados.</p>
+<div class="flex gap-8">
+<a class="hover:text-white transition-colors" href="#">Privacidad</a>
+<a class="hover:text-white transition-colors" href="#">Términos</a>
+</div>
+</div>
+</footer>
+
+</body></html>

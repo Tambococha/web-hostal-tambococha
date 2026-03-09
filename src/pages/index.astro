@@ -1,0 +1,272 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Foto del Hero
+import heroBg from '../assets/photos/hero-tambococha.jpg';
+// NUEVA FOTO: Fachada / Esencia
+import hotelFront from '../assets/photos/hotel-front_02.jpg';
+import mapBg from '../assets/photos/catacocha-satelital-bn.jpg';
+import habitacionSimpleImg from '../assets/photos/habitacion-simple.jpg';
+import habitacionMatrimonialImg from '../assets/photos/habitacion-matrimonial.jpg';
+import habitacionDobleTripleImg from '../assets/photos/habitacion-compartida.jpg';
+import miradorShiriculapoImg from '../assets/photos/mirador-shiriculapo.jpg';
+import catacochaSenderismoImg from '../assets/photos/catacocha-senderismo.jpg';
+import reservaPisacaImg from '../assets/photos/reserva-pisaca.jpg';
+---
+
+<Layout title="Bienvenidos | Hotel Tambococha">
+    <!-- Hero Section -->
+    <section class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden pt-20">
+        <div class="absolute inset-0">
+            <!-- Capa oscura para que el texto sea legible -->
+            <div class="absolute inset-0 bg-black/40 z-10"></div>
+            
+            <!-- AQUÍ INYECTAMOS TU FOTO LOCAL OPTIMIZADA -->
+            <!-- loading="eager" le dice al navegador que la cargue de inmediato porque es lo primero que se ve -->
+            <Image 
+                src={heroBg}
+                alt="Exteriores de Hotel Tambococha rodeado de montañas andinas en Catacocha" 
+                class="w-full h-full object-cover object-[50%_20%] scale-105" <!-- Ajusta el 30% a tu gusto -->
+                quality="high"
+                loading="eager"
+            />
+        </div>
+        
+        <div class="relative z-20 text-center px-4 max-w-5xl">
+            <h1 class="font-serif text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-white mb-6 drop-shadow-2xl">
+                Descansa cómodamente en el Corazón de Catacocha
+            </h1>
+            <p class="text-white/95 text-lg md:text-2xl font-light mb-10 max-w-3xl mx-auto">
+                Tradición y calma se encuentran en el Balcón de los Andes.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="/habitaciones" class="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto px-8 md:px-12 py-4 md:py-5 rounded-xl font-bold text-base md:text-lg transition-transform hover:scale-105 shadow-2xl inline-block">
+                    Reserva Ahora
+                </a>
+                <a href="#nuestra-esencia" class="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white w-full sm:w-auto px-8 md:px-12 py-4 md:py-5 rounded-xl font-bold text-base md:text-lg transition-transform hover:scale-105 shadow-2xl inline-block">
+                    Conoce Más
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+            <a href="#nuestra-esencia" aria-label="Bajar a la siguiente sección">
+                <span class="material-symbols-outlined text-white text-4xl">expand_more</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Nuestra Esencia -->
+    <section id="nuestra-esencia" class="py-12 md:py-24 px-4 md:px-6 bg-white shrink-0 scroll-mt-20">
+        <div class="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div class="relative">
+                <div class="absolute -top-4 -left-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl"></div>
+                
+                <!-- AQUÍ INYECTAMOS LA NUEVA FOTO OPTIMIZADA -->
+                <Image 
+                    src={hotelFront} 
+                    alt="Fachada y arquitectura tradicional del Hotel Tambococha en Catacocha" 
+                    class="rounded-2xl shadow-2xl relative z-10 w-full aspect-[4/3] object-cover" 
+                />
+                
+                <div class="absolute -bottom-8 -right-8 bg-background-light p-6 rounded-2xl shadow-xl hidden lg:block z-20">
+                    <p class="text-primary font-serif font-bold text-4xl">20+</p>
+                    <p class="text-earth/60 text-sm font-bold uppercase tracking-wider">Años de Excelencia</p>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <span class="text-primary font-bold tracking-[0.2em] uppercase text-sm">Nuestra Esencia</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-earth">
+                    Patrimonio y Hospitalidad en Armonía
+                </h2>
+                <p class="text-earth/70 text-lg leading-relaxed">
+                    Ubicado en el centro fundacional de la emblemática ciudad de Catacocha, el Hotel Tambococha es el refugio ideal para viajeros y familias. Construido para integrarse con el paisaje tradicional, ofrecemos una experiencia donde la comodidad se enriquece con nuestra historia y sus paisajes.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                    <div class="flex flex-col gap-2">
+                        <span class="material-symbols-outlined text-sage text-3xl">home</span>
+                        <h4 class="font-bold text-earth text-lg">Cómodo</h4>
+                        <p class="text-sm text-earth/60">Habitaciones diseñadas para un descanso absoluto y reparador.</p>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <span class="material-symbols-outlined text-sage text-3xl">family_restroom</span>
+                        <h4 class="font-bold text-earth text-lg">Familiar</h4>
+                        <p class="text-sm text-earth/60">Un ambiente cálido y acogedor para compartir con los que más quieres.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Habitaciones Preview -->
+    <section class="py-12 md:py-24 px-4 md:px-6 bg-background-light" id="habitaciones-preview">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 text-earth">Descansa con Tranquilidad</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-earth/60 max-w-2xl mx-auto text-lg">Habitaciones diseñadas para un descanso óptimo y seguro, con vistas privilegiadas al centro histórico de la ciudad.</p>
+            </div>
+            <div class="flex flex-row flex-wrap justify-center gap-8 lg:gap-12">
+                <a href="/habitacionsingle" class="group block w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)]">
+                    <div class="relative overflow-hidden rounded-2xl mb-5 aspect-[4/5]">
+                        <Image alt="Habitación Simple con decoraciones locales" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={habitacionSimpleImg}/>
+                        <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-earth">Ideal Viajeros</div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-2xl font-bold text-earth">Habitación Simple</h3>
+                            <div class="text-right">
+                                <div class="text-primary font-bold font-serif leading-none">$12<span class="text-earth/40 text-sm font-normal">/noche</span></div>
+                                <div class="text-[10px] text-earth/60 uppercase font-bold mt-2">Feriado: $15</div>
+                            </div>
+                        </div>
+                        <p class="text-earth/60 text-sm mt-3">Privacidad y confort total para el viajero moderno con todas las facilidades.</p>
+                    </div>
+                </a>
+                <a href="/habitacionmatrimonial" class="group block w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)]">
+                    <div class="relative overflow-hidden rounded-2xl mb-5 aspect-[4/5]">
+                        <Image alt="Confortable Habitación Matrimonial" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={habitacionMatrimonialImg}/>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-2xl font-bold text-earth">Habitación Matrimonial</h3>
+                            <div class="text-right">
+                                <div class="text-primary font-bold font-serif leading-none">$18<span class="text-earth/40 text-sm font-normal">/noche</span></div>
+                                <div class="text-[10px] text-earth/60 uppercase font-bold mt-2">Feriado: $22</div>
+                            </div>
+                        </div>
+                        <p class="text-earth/60 text-sm mt-3">Espacio compartido con camas premium y ventanales al centro histórico.</p>
+                    </div>
+                </a>
+                <a href="/habitaciondobletriple" class="group block w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)]">
+                    <div class="relative overflow-hidden rounded-2xl mb-5 aspect-[4/5]">
+                        <Image alt="Amplia Habitación Doble/Triple" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={habitacionDobleTripleImg}/>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-2xl font-bold text-earth">Habitación Doble/Triple</h3>
+                            <div class="text-right">
+                                <div class="text-primary font-bold font-serif leading-none">$10<span class="text-earth/40 text-sm font-normal">/pers.</span></div>
+                                <div class="text-[10px] text-earth/60 uppercase font-bold mt-2">Feriado: $12</div>
+                            </div>
+                        </div>
+                        <p class="text-earth/60 text-sm mt-3">Acomodación en cuartos dobles o triples, diseñados para comodidad de grupos.</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="/habitaciones" class="inline-flex items-center gap-2 border border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-widest transition-all">
+                    Ver todas las habitaciones
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Actividades Preview -->
+    <section class="py-12 md:py-24 px-4 md:px-6 bg-white" id="actividades-preview">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 md:mb-20">
+                <span class="text-primary font-bold tracking-widest uppercase text-sm">Descubre Catacocha</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mt-2 text-earth">Atractivos Turísticos</h2>
+            </div>
+            </div>
+            <div class="flex flex-row flex-wrap justify-center gap-12">
+                <!-- 1. Mirador Shiriculapo -->
+                <a href="/actividades" class="flex flex-col items-center text-center group w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-2rem)]">
+                    <div class="w-56 h-56 rounded-full overflow-hidden mb-6 border-8 border-background-light group-hover:border-primary/20 transition-all duration-300">
+                        <Image alt="Vista panorámica desde Shiriculapo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src={miradorShiriculapoImg}/>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-3 text-earth group-hover:text-primary transition-colors">Mirador Shiriculapo</h4>
+                    <p class="text-earth/60 text-sm px-4 leading-relaxed">Un sitio sagrado y monumental que ofrece una panorámica infinita del horizonte lojano.</p>
+                </a>
+                
+                <!-- 2. Senderismo Andino -->
+                <a href="/actividades" class="flex flex-col items-center text-center group w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-2rem)]">
+                    <div class="w-56 h-56 rounded-full overflow-hidden mb-6 border-8 border-background-light group-hover:border-primary/20 transition-all duration-300">
+                        <Image alt="Senderismo en los Andes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src={catacochaSenderismoImg}/>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-3 text-earth group-hover:text-primary transition-colors">Senderismo Andino</h4>
+                    <p class="text-earth/60 text-sm px-4 leading-relaxed">Rutas espectaculares que serpentean por la cordillera con vistas que te quitarán el aliento.</p>
+                </a>
+
+                <!-- 3. Reserva Natural Pisaca -->
+                <a href="/actividades" class="flex flex-col items-center text-center group w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-2rem)]">
+                    <div class="w-56 h-56 rounded-full overflow-hidden mb-6 border-8 border-background-light group-hover:border-primary/20 transition-all duration-300">
+                        <Image alt="Reserva Natural Pisaca" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src={reservaPisacaImg}/>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-3 text-earth group-hover:text-primary transition-colors">Reserva Natural Pisaca</h4>
+                    <p class="text-earth/60 text-sm px-4 leading-relaxed">Un refugio de biodiversidad andina con ecosistemas endémicos ideales para el ecoturismo y observación de flora y fauna.</p>
+                </a>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="/actividades" class="inline-flex items-center gap-2 border border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-widest transition-all">
+                    Explorar actividades
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto / Ubicación Preview -->
+    <section class="flex flex-col lg:flex-row min-h-[600px]">
+        <div class="lg:w-1/2 relative min-h-[450px]">
+            <div class="absolute inset-0 bg-sage/10">
+                <div class="w-full h-full bg-slate-200 flex items-center justify-center relative overflow-hidden">
+                    
+                    <!-- AQUÍ VA TU MAPA SATELITAL EN B/N OPTIMIZADO -->
+                    <Image 
+                        src={mapBg} 
+                        alt="Mapa satelital de Catacocha, ubicación exacta del Hotel Tambococha" 
+                        class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale" 
+                    />
+                    
+                    <div class="relative z-10 flex flex-col items-center">
+                        <span class="material-symbols-outlined text-primary text-7xl animate-bounce">location_on</span>
+                        <p class="mt-4 font-bold text-earth bg-white/90 px-6 py-3 rounded-full shadow-lg backdrop-blur font-serif text-center">Centro de Catacocha, Loja</p>
+                        <a href="/ubicacion" class="mt-4 text-xs font-bold uppercase tracking-widest text-primary hover:text-earth transition-colors bg-white/80 px-6 py-3 rounded-full backdrop-blur shadow-sm">Ver Ubicación Detallada</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lg:w-1/2 bg-[#221a10] text-[#f8f7f6] p-8 md:p-12 lg:p-24 flex flex-col justify-center">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-8 font-serif">Contáctanos</h2>
+            <div class="space-y-10">
+                <div class="flex items-start gap-6">
+                    <span class="material-symbols-outlined text-primary text-3xl">map</span>
+                    <div>
+                        <h5 class="font-bold text-primary uppercase text-xs tracking-widest mb-1">Dirección</h5>
+                        <p class="text-[#f8f7f6]/70 text-lg">25 de Junio y Lauro Guerrero, Catacocha, Loja, Ecuador</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-6">
+                    <span class="material-symbols-outlined text-primary text-3xl">call</span>
+                    <div>
+                        <h5 class="font-bold text-primary uppercase text-xs tracking-widest mb-1">Teléfono</h5>
+                        <p class="text-[#f8f7f6]/70 text-lg">Whatsapp: +593 9 8526 5183 // +593 9 9087 0767</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-6">
+                    <span class="material-symbols-outlined text-primary text-3xl">mail</span>
+                    <div>
+                        <h5 class="font-bold text-primary uppercase text-xs tracking-widest mb-1">Email</h5>
+                        <p class="text-[#f8f7f6]/70 text-lg">hoteltambococha@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-14 flex flex-wrap gap-4">
+                <a href="https://wa.me/56995937066" target="_blank" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl flex items-center gap-3 font-bold transition-transform hover:scale-105 shadow-xl">
+                    <span class="material-symbols-outlined">chat</span>
+                    WhatsApp Directo
+                </a>
+                <a href="/contacto" class="bg-transparent border border-white/20 text-white px-8 py-4 rounded-xl flex items-center gap-3 font-bold transition-all hover:bg-white/10">
+                    Ir al Formulario
+                    <span class="material-symbols-outlined">mail</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</Layout>

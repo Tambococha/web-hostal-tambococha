@@ -1,0 +1,169 @@
+---
+// ReservaForm.astro
+---
+
+<section class="max-w-xl mx-auto p-6 bg-white rounded-2xl shadow-xl border border-gray-100">
+    <h2 class="text-2xl font-serif font-bold text-hotel-dark mb-6">Consulta Disponibilidad</h2>
+    
+    <form id="reserva-form" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label for="fecha_entrada" class="block text-sm font-medium text-gray-700 mb-1">Entrada</label>
+                <input type="date" id="fecha_entrada" name="fecha_entrada" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hotel-primary focus:border-transparent outline-none transition-all" />
+            </div>
+            <div>
+                <label for="fecha_salida" class="block text-sm font-medium text-gray-700 mb-1">Salida</label>
+                <input type="date" id="fecha_salida" name="fecha_salida" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hotel-primary focus:border-transparent outline-none transition-all" />
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label for="habitacion_id" class="block text-sm font-medium text-gray-700 mb-1">Tipo de Habitación</label>
+                <select id="habitacion_id" name="habitacion_id" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hotel-primary focus:border-transparent outline-none transition-all appearance-none bg-white">
+                    <option value="">Selecciona...</option>
+                    <option value="simple">Habitación Simple</option>
+                    <option value="matrimonial">Habitación Matrimonial</option>
+                    <option value="doble-triple">Habitación Doble/Triple</option>
+                </select>
+            </div>
+            <div>
+                <label for="cantidad_personas" class="block text-sm font-medium text-gray-700 mb-1">Personas</label>
+                <input type="number" id="cantidad_personas" name="cantidad_personas" min="1" max="10" value="1" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hotel-primary focus:border-transparent outline-none transition-all" />
+            </div>
+        </div>
+
+        <div class="space-y-4 pt-4 border-t border-gray-100">
+            <div>
+                <label for="nombre_huesped" class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo</label>
+                <input type="text" id="nombre_huesped" name="nombre_huesped" placeholder="Ej: Juan Pérez" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hotel-primary focus:border-transparent outline-none transition-all" />
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hotel-primary focus:border-transparent outline-none transition-all" />
+            </div>
+            <div>
+                <label for="telefono" class="block text-sm font-medium text-gray-700 mb-1">Teléfono / WhatsApp</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+593 ..." required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hotel-primary focus:border-transparent outline-none transition-all" />
+            </div>
+        </div>
+
+        <div id="status-message" class="hidden"></div>
+        <button type="submit" id="btn-submit-reserva"
+            class="w-full py-3 px-6 bg-hotel-primary hover:bg-opacity-90 text-white font-bold rounded-xl shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98] mt-4">
+            Consultar Disponibilidad
+        </button>
+    </form>
+</section>
+
+<script>
+    import { supabase } from '../lib/supabase.js';
+
+    const initReservaForm = () => {
+        const form = document.getElementById('reserva-form') as HTMLFormElement;
+        const btnSubmit = document.getElementById('btn-submit-reserva') as HTMLButtonElement;
+        const statusMessage = document.getElementById('status-message');
+        const phoneInput = document.getElementById('telefono') as HTMLInputElement;
+
+        if(!form || form.dataset.initialized) return;
+        form.dataset.initialized = 'true';
+
+        let iti: any;
+        // @ts-ignore
+        if (window.intlTelInput) {
+            // @ts-ignore
+            iti = window.intlTelInput(phoneInput, {
+                initialCountry: "ec",
+                separateDialCode: true,
+                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
+            });
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Validación intl-tel-input
+            if (iti && !iti.isValidNumber()) {
+                if (statusMessage) {
+                    statusMessage.className = "rounded-lg p-3 text-sm bg-red-100 text-red-700 block mt-4";
+                    statusMessage.textContent = "Por favor, ingresa un número de teléfono válido.";
+                }
+                phoneInput.focus();
+                return;
+            }
+
+            const formData = new FormData(form);
+            const telefonoFinal = iti ? iti.getNumber() : formData.get('telefono');
+
+            const originalText = btnSubmit.innerHTML;
+            btnSubmit.innerHTML = "Procesando...";
+            btnSubmit.style.opacity = "0.7";
+            btnSubmit.style.pointerEvents = "none";
+            
+            if (statusMessage) statusMessage.className = "hidden";
+
+            const reservaData = {
+                // Adaptar nombres para que coincidan con BD
+                cliente_nombre: formData.get('nombre_huesped'),
+                habitacion_tipo: formData.get('habitacion_id'),
+                checkin: formData.get('fecha_entrada'),
+                checkout: formData.get('fecha_salida'),
+                huespedes: parseInt(formData.get('cantidad_personas') as string, 10),
+                telefono: telefonoFinal,
+                estado: "pendiente"
+            };
+
+            try {
+                const { error } = await supabase
+                    .from('reservas')
+                    .insert([reservaData]);
+
+                if (error) {
+                    console.error("Error al guardar en Supabase:", error);
+                    if (statusMessage) {
+                        statusMessage.className = "rounded-lg p-3 text-sm bg-red-100 text-red-700 block mt-4";
+                        statusMessage.textContent = "Ocurrió un error al procesar tu solicitud.";
+                    }
+                } else {
+                    console.log("¡Consulta inyectada en Supabase!");
+                    if (statusMessage) {
+                        statusMessage.className = "rounded-lg p-3 text-sm bg-green-100 text-green-700 block mt-4";
+                        statusMessage.textContent = "¡Consulta recibida! Abriendo WhatsApp...";
+                    }
+
+                    // Armar mensaje WhatsApp
+                    const mensajeWhatsApp = `*NUEVA CONSULTA DE DISPONIBILIDAD* 🛎️\n\nHola Hotel Tambococha, soy *${reservaData.cliente_nombre}* y quisiera saber si hay disponibilidad:\n\n🛏️ *Habitación:* ${reservaData.habitacion_tipo}\n📅 *In:* ${reservaData.checkin}\n📅 *Out:* ${reservaData.checkout}\n👤 *Huéspedes:* ${reservaData.huespedes}\n📞 *Teléfono:* ${telefonoFinal}`;
+                    
+                    const phone = "56995937066";
+                    const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(mensajeWhatsApp)}`;
+                    
+                    setTimeout(() => {
+                        window.open(whatsappUrl, '_blank');
+                        form.reset();
+                        if (statusMessage) statusMessage.className = "hidden";
+                    }, 1000);
+                }
+            } catch (err) {
+                console.error("Error general:", err);
+                if (statusMessage) {
+                    statusMessage.className = "rounded-lg p-3 text-sm bg-red-100 text-red-700 block mt-4";
+                    statusMessage.textContent = "Error de red. Inténtalo de nuevo.";
+                }
+            } finally {
+                btnSubmit.innerHTML = originalText;
+                btnSubmit.style.opacity = "1";
+                btnSubmit.style.pointerEvents = "auto";
+            }
+        });
+    };
+
+    initReservaForm();
+    document.addEventListener('astro:page-load', initReservaForm);
+</script>

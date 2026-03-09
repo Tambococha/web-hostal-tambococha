@@ -1,0 +1,510 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import habitacionSimpleImg from '../assets/photos/habitacion-simple.jpg';
+---
+
+<Layout title="Habitación Doble/Triple | Hotel Tambococha">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 pt-24 md:pt-32">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16">
+            <div class="lg:col-span-8 order-1">
+                <div class="flex flex-col md:grid md:grid-cols-12 gap-4 h-auto md:h-[500px]">
+                    <div class="md:col-span-8 h-72 md:h-full rounded-xl overflow-hidden group cursor-pointer gallery-trigger" data-index="0">
+                        <Image alt="Habitación Simple View" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 gallery-img" src={habitacionSimpleImg}/>
+                    </div>
+                    <div class="md:col-span-4 flex flex-row md:flex-col gap-4 h-32 md:h-full shrink-0">
+                        <div class="flex-1 rounded-xl overflow-hidden group cursor-pointer gallery-trigger relative" data-index="1">
+                            <img alt="Suite Interior" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 gallery-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGI2MsqYmBPHbC-CH2TifPTqGjKaORXbOcO9mSeqD9Y2kcLTd3QjbodmgfChfFv_YzlgfgA9_5kwB9VkqhOcGFOj4OiSL85ptBETJCLsIM9EUbaYVzxvjmxGFvmg9SGsuqeRXaIwjBEIdijtYmGoXEuBofKlLOpgMd6UbLLs3MJtXffBID9afJpbEoQo5rY6FV6XYTV_FvpwvRr0UD33KMt1rsTJssGIyAyDvAld6tjuBSy_3VqriRkT_EQi7lrUUORerB6pmZ9Kk"/>
+                        </div>
+                        <div class="flex-1 rounded-xl overflow-hidden group cursor-pointer gallery-trigger relative" data-index="2">
+                            <img alt="Bathroom detail" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 gallery-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2LTph9RCmEmyND-RXZVT96FB47fcJNobqkMPMw-OjGA9aCEiteu7nmOUg4W49FbYsHyxM6mTwfAKoNjKxdpEYclDzPV6MxcHfiGw2G4i_ztNQkEoJJ4WuvRB-8dbgic7M1PfJsRsqgAZTvbtdP52vTBmI3PZo0Z30zMWKPeOB74Bii3OYQokZ09O1yIUcbKmbtRmWitgY8uUFBY8yQYQuDvDyBuM9q0fDAAuwIH8Sdg4IZOBfUnY6A9MHH0OIK0I3wnehkdpP3Uk"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-4 order-2 lg:row-span-2 mt-4 lg:mt-0 lg:sticky lg:top-28 relative z-10">
+                <div class="bg-white rounded-xl shadow-2xl shadow-earth/10 border border-earth/5 p-6 md:p-8">
+                    <div class="mb-8">
+                        <p class="text-[10px] uppercase tracking-[0.2em] font-black text-sage mb-1">Precio por persona</p>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-black text-earth">$10</span>
+                            <span class="text-earth/60 font-medium font-serif line-through mr-2">usd/pers</span>
+                            <span class="text-xl font-black text-primary ml-4">$12</span>
+                            <span class="text-primary/60 font-medium text-xs font-serif uppercase">En Feriado</span>
+                        </div>
+                    </div>
+                    
+                    <form class="space-y-4 mb-8 text-left">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-earth/10 border border-earth/10 rounded-lg overflow-hidden">
+                            <div class="p-4 bg-background-light">
+                                <label class="block text-[10px] font-black uppercase tracking-widest text-earth/50 mb-1">Check-in</label>
+                                <input id="checkin" placeholder="Elegir..." class="bg-transparent border-none p-0 text-sm font-bold focus:ring-0 w-full text-earth outline-none cursor-pointer placeholder:font-normal placeholder:text-earth/40" type="text" readonly/>
+                            </div>
+                            <div class="p-4 bg-background-light">
+                                <label class="block text-[10px] font-black uppercase tracking-widest text-earth/50 mb-1">Check-out</label>
+                                <input id="checkout" placeholder="Elegir..." class="bg-transparent border-none p-0 text-sm font-bold focus:ring-0 w-full text-earth outline-none cursor-pointer placeholder:font-normal placeholder:text-earth/40" type="text" readonly/>
+                            </div>
+                        </div>
+                        <div class="border border-earth/10 rounded-lg p-4 bg-background-light">
+                            <label class="block text-[10px] font-black uppercase tracking-widest text-earth/50 mb-1">Tipo de Habitación</label>
+                            <div class="flex flex-col sm:flex-row justify-between sm:items-center bg-transparent w-full">
+                                <select onchange="window.location.href=this.value" class="bg-transparent border-none p-0 w-full outline-none text-sm font-bold text-earth cursor-pointer appearance-none break-words">
+                                    <option value="/habitacionsingle">Habitación Simple</option>
+                                    <option value="/habitacionmatrimonial">Habitación Matrimonial</option>
+                                    <option value="/habitaciondobletriple" selected>Habitación Doble/Triple</option>
+                                    <option value="/habitacionfamiliar">Habitación Familiar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="border border-earth/10 rounded-lg p-4 bg-background-light">
+                            <label class="block text-[10px] font-black uppercase tracking-widest text-earth/50 mb-1">Adultos</label>
+                            <input id="huespedes" class="bg-transparent border-none p-0 w-full outline-none text-sm font-bold text-earth" type="number" min="1" max="3" value="2"/>
+                        </div>
+                    </form>
+                    
+                    <button id="btn-pre-reserva" class="w-full bg-sage hover:bg-earth text-white font-bold py-5 rounded-lg transition-all flex items-center justify-center gap-3 uppercase tracking-widest text-xs">
+                        <span id="btn-text">Confirmar Reserva</span>
+                        <span class="material-symbols-outlined text-lg">calendar_today</span>
+                    </button>
+                    <p class="text-center text-[10px] text-earth/40 mt-6 uppercase tracking-widest font-bold">
+                        Garantía de mejor precio online
+                    </p>
+                </div>
+            </div>
+            <div class="lg:col-span-8 order-3 mt-8 lg:mt-0">
+                <div class="mb-12">
+                    <div class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-6">
+                        <span class="w-8 h-[2px] bg-primary/30"></span>
+                        Habitación Estándar
+                    </div>
+                    <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-black text-earth mb-6 md:mb-8">Habitación Doble/Triple</h2>
+                    <div class="flex flex-col sm:flex-row flex-wrap gap-6 sm:gap-10 mb-8 md:mb-12">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-[10px] uppercase tracking-widest font-black text-earth/40">Superficie</span>
+                            <div class="flex items-center gap-2 font-bold text-earth">
+                                <span class="material-symbols-outlined text-primary text-xl">square_foot</span>
+                                25 m²
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <span class="text-[10px] uppercase tracking-widest font-black text-earth/40">Cama</span>
+                            <div class="flex items-center gap-2 font-bold text-earth">
+                                <span class="material-symbols-outlined text-primary text-xl">single_bed</span>
+                                Camas Individuales/Mixtas
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <span class="text-[10px] uppercase tracking-widest font-black text-earth/40">Ocupación</span>
+                            <div class="flex items-center gap-2 font-bold text-earth">
+                                <span class="material-symbols-outlined text-primary text-xl">person</span>
+                                Hasta 3 Adultos
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-4 mb-8 md:mb-12 p-4 bg-background-light rounded-xl border border-earth/5 sm:inline-flex inline-flex">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sage text-sm">schedule</span>
+                            <span class="text-xs font-bold text-earth/70 uppercase tracking-widest">Check in: <span class="text-earth">14:00</span></span>
+                        </div>
+                        <div class="hidden sm:block w-px h-4 bg-earth/10"></div>
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sage text-sm">event_available</span>
+                            <span class="text-xs font-bold text-earth/70 uppercase tracking-widest">Check out: <span class="text-earth">12:00</span></span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="font-serif text-2xl font-bold mb-6 md:mb-8 text-earth">Servicios Incluidos</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="flex items-center gap-3 px-5 py-4 rounded-xl bg-white border border-earth/5 shadow-sm">
+                            <span class="material-symbols-outlined text-sage">wifi</span>
+                            <span class="text-sm font-bold text-earth/80">Wifi de Alta Velocidad</span>
+                        </div>
+                        <div class="flex items-center gap-3 px-5 py-4 rounded-xl bg-white border border-earth/5 shadow-sm">
+                            <span class="material-symbols-outlined text-sage">bathtub</span>
+                            <span class="text-sm font-bold text-earth/80">Baño Privado</span>
+                        </div>
+                        <div class="flex items-center gap-3 px-5 py-4 rounded-xl bg-white border border-earth/5 shadow-sm">
+                            <span class="material-symbols-outlined text-sage">hot_tub</span>
+                            <span class="text-sm font-bold text-earth/80">Ducha Caliente</span>
+                        </div>
+                        <div class="flex items-center gap-3 px-5 py-4 rounded-xl bg-white border border-earth/5 shadow-sm">
+                            <span class="material-symbols-outlined text-sage">concierge</span>
+                            <span class="text-sm font-bold text-earth/80">Recepción</span>
+                        </div>
+                        <div class="flex items-center gap-3 px-5 py-4 rounded-xl bg-white border border-earth/5 shadow-sm">
+                            <span class="material-symbols-outlined text-sage">smart_display</span>
+                            <span class="text-sm font-bold text-earth/80">Smart TV</span>
+                        </div>
+                        <div class="flex items-center gap-3 px-5 py-4 rounded-xl bg-white border border-earth/5 shadow-sm">
+                            <span class="material-symbols-outlined text-sage">air</span>
+                            <span class="text-sm font-bold text-earth/80">Ventilador</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE RESUMEN -->
+    <div id="booking-modal" class="fixed inset-0 z-[100] hidden items-center justify-center opacity-0 transition-opacity duration-300">
+        <div id="modal-backdrop" class="absolute inset-0 bg-earth/80 backdrop-blur-sm cursor-pointer"></div>
+        <div class="relative bg-white rounded-2xl p-6 md:p-8 w-[95%] md:max-w-md mx-auto shadow-2xl z-10 transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto" id="modal-content">
+            <button id="close-modal" class="absolute top-4 right-4 text-earth/40 hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+            <div class="flex items-center gap-3 mb-6">
+                <span class="material-symbols-outlined text-sage text-3xl">receipt_long</span>
+                <h3 class="font-serif text-xl md:text-2xl font-bold text-earth">Resumen de Reserva</h3>
+            </div>
+            <div class="bg-background-light border border-earth/10 p-5 rounded-xl mb-6 space-y-3 text-sm">
+                <div class="flex justify-between items-center"><span class="text-earth/60 font-bold uppercase text-[10px] tracking-widest">Habitación:</span> <span class="font-bold text-earth">Doble/Triple</span></div>
+                <div class="flex justify-between items-center"><span class="text-earth/60 font-bold uppercase text-[10px] tracking-widest">Check-in:</span> <span class="font-bold text-earth" id="modal-in">-</span></div>
+                <div class="flex justify-between items-center"><span class="text-earth/60 font-bold uppercase text-[10px] tracking-widest">Check-out:</span> <span class="font-bold text-earth" id="modal-out">-</span></div>
+                <div class="flex justify-between items-center"><span class="text-earth/60 font-bold uppercase text-[10px] tracking-widest">Estadía:</span> <span class="font-bold text-earth bg-sage/10 text-sage px-2 py-1 rounded" id="modal-nights">0 noches</span></div>
+                <div class="h-px w-full bg-earth/10 my-3"></div>
+                <div class="flex justify-between items-end">
+                    <span class="font-black text-earth text-lg">Total a pagar:</span> 
+                    <div class="text-right">
+                        <span class="font-black text-primary text-3xl font-serif" id="modal-total">$0</span>
+                        <p class="text-[9px] text-earth/50 uppercase tracking-widest mt-1">*Pago en recepción</p>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-4 mb-8">
+                <div>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-earth/50 mb-1">Tu Nombre Completo *</label>
+                    <input id="client-name" type="text" class="w-full bg-white border border-earth/20 rounded-lg p-3 text-sm font-bold text-earth focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Ej. Juan Pérez">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-earth/50 mb-1">Tu Teléfono Móvil *</label>
+                    <input id="client-phone" type="tel" class="w-full bg-white border border-earth/20 rounded-lg p-3 text-sm font-bold text-earth focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="">
+                </div>
+            </div>
+            <button id="btn-confirm-wa" class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 rounded-lg transition-all flex items-center justify-center gap-3 uppercase tracking-widest text-xs shadow-lg shadow-[#25D366]/30">
+                Confirmar por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Image Gallery Modal -->
+    <div id="gallery-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-earth/80 backdrop-blur-md opacity-0 transition-opacity duration-300">
+        <button id="close-gallery" class="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-primary bg-black/20 hover:bg-white rounded-full w-10 h-10 md:w-14 md:h-14 flex items-center justify-center transition-all z-[110]">
+            <span class="material-symbols-outlined text-xl md:text-3xl">close</span>
+        </button>
+        
+        <button id="gallery-prev" class="absolute left-2 md:left-12 top-1/2 -translate-y-1/2 text-white hover:text-primary bg-black/20 hover:bg-white rounded-full w-10 h-10 md:w-16 md:h-16 flex items-center justify-center transition-all z-[110]">
+            <span class="material-symbols-outlined text-2xl md:text-5xl">chevron_left</span>
+        </button>
+        
+        <button id="gallery-next" class="absolute right-2 md:right-12 top-1/2 -translate-y-1/2 text-white hover:text-primary bg-black/20 hover:bg-white rounded-full w-10 h-10 md:w-16 md:h-16 flex items-center justify-center transition-all z-[110]">
+            <span class="material-symbols-outlined text-2xl md:text-5xl">chevron_right</span>
+        </button>
+
+        <div class="relative w-full max-w-6xl px-12 md:px-32 flex items-center justify-center z-[105] pointer-events-none">
+            <img id="gallery-image-view" class="w-full aspect-[4/3] md:aspect-video object-cover rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] scale-95 transition-transform duration-300 pointer-events-auto" src="" alt="Gallery Image" />
+        </div>
+    </div>
+
+    <script>
+        import { supabase } from '../lib/supabase.js';
+
+        const initBookingLogic = async () => {
+            const checkin = document.getElementById('checkin') as HTMLInputElement;
+            const checkout = document.getElementById('checkout') as HTMLInputElement;
+            const huespedes = document.getElementById('huespedes') as HTMLInputElement;
+            const btnPreReserva = document.getElementById('btn-pre-reserva');
+            const btnText = document.getElementById('btn-text');
+            const modal = document.getElementById('booking-modal');
+            const modalContent = document.getElementById('modal-content');
+            const clientNameInput = document.getElementById('client-name') as HTMLInputElement;
+            const clientPhoneInput = document.getElementById('client-phone') as HTMLInputElement; 
+            
+            if(!checkin || !checkout || !btnPreReserva || btnPreReserva.dataset.initialized) return;
+            btnPreReserva.dataset.initialized = 'true';
+
+            // Inicializar intl-tel-input
+            // @ts-ignore
+            const iti = window.intlTelInput(clientPhoneInput, {
+                initialCountry: "ec",
+                separateDialCode: true,
+                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
+            });
+
+            const PRECIO_NOCHE = 10; 
+            const PRECIO_FERIADO = 12;
+            const WA_NUMBER = "593985265183";
+            const INVENTARIO_MAXIMO = 5; 
+            const TIPO_HABITACION = "Habitación Doble/Triple";
+
+            let totalNoches = 0;
+            let totalPrecio = 0;
+            let fechasOcupadasMap: Record<string, number> = {}; 
+
+            // --- 1. OBTENER FERIADOS (Nager.Date) ---
+            const FERIADOS = new Set();
+            try {
+                const currentYear = new Date().getFullYear();
+                const [resCurrent, resNext] = await Promise.all([
+                    fetch(`https://date.nager.at/api/v3/PublicHolidays/${currentYear}/EC`),
+                    fetch(`https://date.nager.at/api/v3/PublicHolidays/${currentYear + 1}/EC`)
+                ]);
+                if (resCurrent.ok && resNext.ok) {
+                    const allHolidays = [...await resCurrent.json(), ...await resNext.json()];
+                    allHolidays.forEach((h: any) => {
+                        const dStr = h.date;
+                        FERIADOS.add(dStr);
+                        const date = new Date(dStr + "T00:00:00");
+                        const day = date.getDay();
+                        if (day === 1) {
+                            FERIADOS.add(new Date(date.getTime() - 86400000).toISOString().split('T')[0]);
+                            FERIADOS.add(new Date(date.getTime() - 172800000).toISOString().split('T')[0]);
+                        } else if (day === 5) {
+                            FERIADOS.add(new Date(date.getTime() + 86400000).toISOString().split('T')[0]);
+                            FERIADOS.add(new Date(date.getTime() + 172800000).toISOString().split('T')[0]);
+                        }
+                    });
+                }
+            } catch (e) { console.error("Error API Feriados", e); }
+
+            // --- 2. OBTENER RESERVAS DE SUPABASE ---
+            try {
+                const { data: reservas, error } = await supabase
+                    .from('reservas')
+                    .select('checkin, checkout')
+                    .eq('habitacion_tipo', TIPO_HABITACION)
+                    .neq('estado', 'cancelada');
+
+                if (!error && reservas) {
+                    reservas.forEach(res => {
+                        let currentDate = new Date(res.checkin + "T00:00:00");
+                        let endDate = new Date(res.checkout + "T00:00:00");
+                        
+                        while(currentDate < endDate) {
+                            const dateString = currentDate.toISOString().split('T')[0];
+                            fechasOcupadasMap[dateString] = (fechasOcupadasMap[dateString] || 0) + 1;
+                            currentDate.setDate(currentDate.getDate() + 1);
+                        }
+                    });
+                }
+            } catch (e) { console.error("Error leyendo Supabase", e); }
+
+            // --- 3. CONFIGURAR FLATPICKR ---
+            const configPicker = {
+                locale: "es",
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                disableMobile: true,
+                disable: [
+                    function(date: Date) {
+                        const localDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+                        return (fechasOcupadasMap[localDate] || 0) >= INVENTARIO_MAXIMO;
+                    }
+                ],
+                onDayCreate: function(dObj: any, dStr: any, fp: any, dayElem: HTMLElement) {
+                    // @ts-ignore
+                    const localDate = new Date(dayElem.dateObj.getTime() - (dayElem.dateObj.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+                    if (FERIADOS.has(localDate) && !dayElem.classList.contains('flatpickr-disabled')) {
+                        dayElem.style.backgroundColor = 'rgba(217, 119, 6, 0.15)'; 
+                        dayElem.style.border = '1px solid rgba(217, 119, 6, 0.5)';
+                        dayElem.style.color = '#b45309';
+                        dayElem.style.fontWeight = '900';
+                    }
+                },
+                onChange: calcularEstadia
+            };
+
+            // @ts-ignore
+            if (window.flatpickr) {
+                // @ts-ignore
+                window.flatpickr(checkin, configPicker);
+                // @ts-ignore
+                window.flatpickr(checkout, configPicker);
+            }
+
+            // --- 4. LÓGICA DE PRECIOS Y MODAL ---
+            function calcularEstadia() {
+                if(!checkin.value || !checkout.value) return;
+                const dateIn = new Date(checkin.value + 'T00:00:00');
+                const dateOut = new Date(checkout.value + 'T00:00:00');
+                const dayDiff = Math.round((dateOut.getTime() - dateIn.getTime()) / (1000 * 3600 * 24));
+                
+                if (dayDiff > 0) {
+                    totalNoches = dayDiff;
+                    totalPrecio = 0;
+                    for (let d = new Date(dateIn); d < dateOut; d.setDate(d.getDate() + 1)) {
+                        const localDate = new Date(d.getTime() - (d.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+                        totalPrecio += FERIADOS.has(localDate) ? PRECIO_FERIADO : PRECIO_NOCHE;
+                    }
+                    totalPrecio = totalPrecio * parseInt(huespedes.value, 10);
+                    if(btnText) btnText.textContent = `Confirmar ${totalNoches} Noche${totalNoches > 1 ? 's' : ''}`;
+                } else {
+                    totalNoches = 0;
+                    if(btnText) btnText.textContent = "Fechas Inválidas";
+                }
+            }
+
+            if (huespedes) {
+                huespedes.addEventListener('change', calcularEstadia);
+            }
+
+            function toggleModal(show: boolean) {
+                if(show && totalNoches === 0) return alert("Selecciona fechas válidas.");
+                if(show) {
+                    document.getElementById('modal-in')!.textContent = checkin.value;
+                    document.getElementById('modal-out')!.textContent = checkout.value;
+                    document.getElementById('modal-nights')!.textContent = `${totalNoches} noche${totalNoches > 1 ? 's' : ''}`;
+                    document.getElementById('modal-total')!.textContent = `$${totalPrecio}`;
+                    modal!.classList.remove('hidden'); modal!.classList.add('flex');
+                    setTimeout(() => { modal!.classList.remove('opacity-0'); modalContent!.classList.remove('scale-95'); }, 10);
+                } else {
+                    modal!.classList.add('opacity-0'); modalContent!.classList.add('scale-95');
+                    setTimeout(() => { modal!.classList.add('hidden'); modal!.classList.remove('flex'); }, 300);
+                }
+            }
+
+            btnPreReserva.addEventListener('click', (e) => { e.preventDefault(); toggleModal(true); });
+            document.getElementById('close-modal')!.addEventListener('click', () => toggleModal(false));
+            document.getElementById('modal-backdrop')!.addEventListener('click', () => toggleModal(false));
+
+            // --- 5. ENVIAR A SUPABASE Y WHATSAPP ---
+            document.getElementById('btn-confirm-wa')!.addEventListener('click', async () => {
+                const clientName = clientNameInput.value.trim();
+                
+                if(!clientName) {
+                    alert("Por favor, ingresa tu nombre.");
+                    clientNameInput.focus();
+                    return;
+                }
+                
+                if (!iti.isValidNumber()) {
+                    alert("Por favor, ingresa un número de teléfono válido.");
+                    clientPhoneInput.focus();
+                    clientPhoneInput.classList.remove('border-earth/20', 'focus:ring-primary', 'focus:border-primary');
+                    clientPhoneInput.classList.add('border-red-500', 'ring-2', 'ring-red-500');
+                    setTimeout(() => {
+                        clientPhoneInput.classList.remove('border-red-500', 'ring-2', 'ring-red-500');
+                        clientPhoneInput.classList.add('border-earth/20', 'focus:ring-primary', 'focus:border-primary');
+                    }, 2500);
+                    return;
+                }
+                
+                const clientPhone = iti.getNumber();
+
+                const btnWa = document.getElementById('btn-confirm-wa') as HTMLButtonElement;
+                const originalText = btnWa.innerHTML;
+                btnWa.innerHTML = "Procesando..."; btnWa.style.opacity = "0.7"; btnWa.style.pointerEvents = "none";
+
+                try {
+                    await supabase.from('reservas').insert([{
+                        cliente_nombre: clientName,
+                        telefono: clientPhone,
+                        habitacion_tipo: TIPO_HABITACION,
+                        checkin: checkin.value,
+                        checkout: checkout.value,
+                        noches: totalNoches,
+                        huespedes: parseInt(huespedes.value, 10),
+                        total_usd: totalPrecio,
+                        estado: "pendiente"
+                    }]);
+                } catch (err) { console.error(err); }
+
+                const msg = `*NUEVA PRE-RESERVA* 🛎️\n\nHola, soy *${clientName}* (${clientPhone}).\nQuiero confirmar:\n\n🛏️ *Hab:* Doble/Triple\n📅 *In:* ${checkin.value}\n📅 *Out:* ${checkout.value}\n🌙 *Noches:* ${totalNoches}\n👤 *Pax:* ${huespedes.value}\n\n💰 *Total allá:* $${totalPrecio} USD`;
+                
+                btnWa.innerHTML = originalText; btnWa.style.opacity = "1"; btnWa.style.pointerEvents = "auto";
+                window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+                toggleModal(false);
+                // Recargar la página para actualizar calendario
+                setTimeout(() => window.location.reload(), 1500);
+            });
+        };
+
+        // Ejecutar porque Astro lo empaqueta como module y corre cuando el DOM está listo
+        initBookingLogic();
+
+        // Escuchar astro:page-load para compatibilidad con ViewTransitions
+        document.addEventListener('astro:page-load', initBookingLogic);
+
+        const initGallery = () => {
+            const triggers = document.querySelectorAll('.gallery-trigger');
+            const modal = document.getElementById('gallery-modal');
+            const imgView = document.getElementById('gallery-image-view') as HTMLImageElement;
+            const btnClose = document.getElementById('close-gallery');
+            const btnPrev = document.getElementById('gallery-prev');
+            const btnNext = document.getElementById('gallery-next');
+            
+            if(!modal || !imgView || modal.dataset.initialized) return;
+            modal.dataset.initialized = 'true';
+
+            let images: string[] = [];
+            let currentIndex = 0;
+
+            triggers.forEach(trigger => {
+                const img = trigger.querySelector('.gallery-img') as HTMLImageElement;
+                if(img) {
+                    // Si src no es ruta absoluta puede ser un proxy de Astro, lo agregaremos directo
+                    images.push(img.src);
+                    trigger.addEventListener('click', () => {
+                        currentIndex = parseInt(trigger.getAttribute('data-index') || '0');
+                        openGallery();
+                    });
+                }
+            });
+
+            function openGallery() {
+                updateImage();
+                modal!.classList.remove('hidden');
+                modal!.classList.add('flex');
+                setTimeout(() => {
+                    modal!.classList.remove('opacity-0');
+                    imgView!.classList.remove('scale-95');
+                }, 10);
+            }
+
+            function closeGallery() {
+                modal!.classList.add('opacity-0');
+                imgView!.classList.add('scale-95');
+                setTimeout(() => {
+                    modal!.classList.add('hidden');
+                    modal!.classList.remove('flex');
+                }, 300);
+            }
+
+            function updateImage() {
+                if (images.length > 0) {
+                    imgView.src = images[currentIndex];
+                }
+            }
+
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateImage();
+            }
+
+            function prevImage() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateImage();
+            }
+
+            btnClose?.addEventListener('click', closeGallery);
+            btnNext?.addEventListener('click', nextImage);
+            btnPrev?.addEventListener('click', prevImage);
+            
+            modal!.addEventListener('click', (e) => {
+                if (e.target === modal) closeGallery();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (!modal!.classList.contains('hidden')) {
+                    if (e.key === 'Escape') closeGallery();
+                    if (e.key === 'ArrowRight') nextImage();
+                    if (e.key === 'ArrowLeft') prevImage();
+                }
+            });
+        };
+
+        initGallery();
+        document.addEventListener('astro:page-load', initGallery);
+    </script>
+</Layout>

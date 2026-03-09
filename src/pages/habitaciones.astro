@@ -1,0 +1,260 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+import habitacionSimpleImg from '../assets/photos/habitacion-simple.jpg';
+import habitacionMatrimonialImg from '../assets/photos/habitacion-matrimonial.jpg';
+import habitacionDobleTripleImg from '../assets/photos/habitacion-compartida.jpg';
+---
+
+<Layout title="Nuestras Habitaciones">
+    <section class="bg-background-light pt-24 md:pt-32 pb-10 md:pb-16 px-4 md:px-6 text-center">
+        <div class="max-w-3xl mx-auto">
+            <span class="mb-4 inline-block rounded-full bg-sage/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-sage">Nuestro Alojamiento</span>
+            <h1 class="font-serif text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-earth">Nuestras <span class="italic text-primary">Habitaciones</span></h1>
+            <p class="mt-6 text-lg leading-relaxed text-earth/80 font-medium max-w-2xl mx-auto">
+                Descubre la tranquilidad y el confort en el corazón de Catacocha. Espacios diseñados para tu descanso con vistas inigualables a los Andes ecuatorianos.
+            </p>
+        </div>
+    </section>
+    
+    <div class="max-w-7xl mx-auto px-4 md:px-6 mb-8 md:mb-12">
+        <div class="flex items-center justify-center gap-4 md:gap-8 border-b border-[#221a10]/10 py-4 flex-wrap" id="rooms-filter">
+            <button data-filter="todas" class="room-filter-btn text-sm font-bold tracking-widest uppercase pb-4 transition-colors text-primary border-b-2 border-primary -mb-[18px]">Todas</button>
+            <button data-filter="simples" class="room-filter-btn text-sm font-bold tracking-widest uppercase pb-4 transition-colors text-[#221a10]/50 hover:text-primary">Simples</button>
+            <button data-filter="matrimoniales" class="room-filter-btn text-sm font-bold tracking-widest uppercase pb-4 transition-colors text-[#221a10]/50 hover:text-primary">Matrimoniales</button>
+            <button data-filter="doble-triples" class="room-filter-btn text-sm font-bold tracking-widest uppercase pb-4 transition-colors text-[#221a10]/50 hover:text-primary">Compartidas</button>
+        </div>
+    </div>
+    
+    <section class="max-w-7xl mx-auto px-4 md:px-6 pb-16 md:pb-24">
+        <!-- Contenedor general. Por defecto en grid para "todas", se cambiará a flex cuando sea necesario -->
+        <div id="rooms-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 justify-items-center max-w-4xl mx-auto">
+            <!-- Room 1: Simple -->
+            <div data-category="simples" class="flex flex-col room-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-[#221a10]/5 opacity-100 scale-100 w-full max-w-[400px]">
+                <a href="/habitacionsingle" class="block relative aspect-[4/3] overflow-hidden cursor-pointer group-hover:opacity-90 transition-opacity">
+                    <Image alt="Habitación simple acogedora con cama individual y luz natural" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={habitacionSimpleImg}/>
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm">
+                        <span class="text-xs font-bold text-sage uppercase tracking-wider">Habitación Simple</span>
+                    </div>
+                </a>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-bold pr-2 leading-tight">Habitación<br/>Simple</h3>
+                        <div class="text-right flex-shrink-0">
+                            <p class="text-primary font-bold text-xl leading-none">$12<span class="text-sm text-[#221a10]/40 font-normal font-display">/noche</span></p>
+                            <p class="text-[10px] text-[#221a10]/60 uppercase font-bold mt-1">Feriado: $15</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="grid grid-cols-2 gap-y-3 gap-x-2 mb-6 text-[#221a10]/70">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">wifi</span>
+                                <span class="text-xs font-display font-medium">WiFi</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">smart_display</span>
+                                <span class="text-xs font-display font-medium">Smart TV</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">bathtub</span>
+                                <span class="text-xs font-display font-medium">Baño Privado</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">directions_car</span>
+                                <span class="text-xs font-display font-medium">Parqueadero</span>
+                            </div>
+                        </div>
+                        <a href="/habitacionsingle" class="block text-center w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors font-display">
+                            Ver Detalles
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Room 2: Matrimonial -->
+            <div data-category="matrimoniales" class="flex flex-col room-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-[#221a10]/5 opacity-100 scale-100 w-full max-w-[400px]">
+                <a href="/habitacionmatrimonial" class="block relative aspect-[4/3] overflow-hidden cursor-pointer group-hover:opacity-90 transition-opacity">
+                    <Image alt="Habitación matrimonial premium con cama King y vista panorámica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={habitacionMatrimonialImg}/>
+                    <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full shadow-sm">
+                        <span class="text-xs font-bold uppercase tracking-wider">Matrimonial</span>
+                    </div>
+                </a>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-bold pr-2 leading-tight">Habitación<br/>Matrimonial</h3>
+                        <div class="text-right flex-shrink-0">
+                            <p class="text-primary font-bold text-xl leading-none">$18<span class="text-sm text-[#221a10]/40 font-normal font-display">/noche</span></p>
+                            <p class="text-[10px] text-[#221a10]/60 uppercase font-bold mt-1">Feriado: $22</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="grid grid-cols-2 gap-y-3 gap-x-2 mb-6 text-[#221a10]/70">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">wifi</span>
+                                <span class="text-xs font-display font-medium">WiFi</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">smart_display</span>
+                                <span class="text-xs font-display font-medium">Smart TV</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">bathtub</span>
+                                <span class="text-xs font-display font-medium">Baño Privado</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">directions_car</span>
+                                <span class="text-xs font-display font-medium">Parqueadero</span>
+                            </div>
+                        </div>
+                        <a href="/habitacionmatrimonial" class="block text-center w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors font-display">
+                            Ver Detalles
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Room 3: Doble/Triple -->
+            <div data-category="doble-triples" class="flex flex-col room-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-[#221a10]/5 opacity-100 scale-100 w-full max-w-[400px]">
+                <a href="/habitaciondobletriple" class="block relative aspect-[4/3] overflow-hidden cursor-pointer group-hover:opacity-90 transition-opacity">
+                    <Image alt="Habitación compartida" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={habitacionDobleTripleImg}/>
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm">
+                        <span class="text-xs font-bold text-sage uppercase tracking-wider">Habitación Doble/Triple</span>
+                    </div>
+                </a>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-bold pr-2 leading-tight">Habitación<br/>Doble/Triple</h3>
+                        <div class="text-right flex-shrink-0">
+                            <p class="text-primary font-bold text-xl leading-none">$10<span class="text-sm text-[#221a10]/40 font-normal font-display">/pers.</span></p>
+                            <p class="text-[10px] text-[#221a10]/60 uppercase font-bold mt-1">Feriado: $12</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="grid grid-cols-2 gap-y-3 gap-x-2 mb-6 text-[#221a10]/70">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">wifi</span>
+                                <span class="text-xs font-display font-medium">WiFi</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">smart_display</span>
+                                <span class="text-xs font-display font-medium">Smart TV</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">bathtub</span>
+                                <span class="text-xs font-display font-medium">Baño Privado</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">directions_car</span>
+                                <span class="text-xs font-display font-medium">Parqueadero</span>
+                            </div>
+                        </div>
+                        <a href="/habitaciondobletriple" class="block text-center w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors font-display">
+                            Ver Detalles
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Room 4: Familiar -->
+            <div data-category="doble-triples" class="flex flex-col room-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-[#221a10]/5 opacity-100 scale-100 w-full max-w-[400px]">
+                <a href="/habitacionfamiliar" class="block relative aspect-[4/3] overflow-hidden cursor-pointer group-hover:opacity-90 transition-opacity">
+                    <!-- Usando la misma imagen de compartida por defecto -->
+                    <Image alt="Habitación familiar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={habitacionDobleTripleImg}/>
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm">
+                        <span class="text-xs font-bold text-sage uppercase tracking-wider">Habitación Familiar</span>
+                    </div>
+                </a>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-bold pr-2 leading-tight">Habitación<br/>Familiar</h3>
+                        <div class="text-right flex-shrink-0">
+                            <p class="text-primary font-bold text-xl leading-none">$10<span class="text-sm text-[#221a10]/40 font-normal font-display">/pers.</span></p>
+                            <p class="text-[10px] text-[#221a10]/60 uppercase font-bold mt-1">Feriado: $12</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="grid grid-cols-2 gap-y-3 gap-x-2 mb-6 text-[#221a10]/70">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">wifi</span>
+                                <span class="text-xs font-display font-medium">WiFi</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">smart_display</span>
+                                <span class="text-xs font-display font-medium">Smart TV</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">bathtub</span>
+                                <span class="text-xs font-display font-medium">Baño Privado</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[1.1rem]">directions_car</span>
+                                <span class="text-xs font-display font-medium">Parqueadero</span>
+                            </div>
+                        </div>
+                        <a href="/habitacionfamiliar" class="block text-center w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors font-display">
+                            Ver Detalles
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const filterBtns = document.querySelectorAll('.room-filter-btn');
+        const roomCards = document.querySelectorAll('.room-card');
+        const roomsContainer = document.getElementById('rooms-container');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 1. Remove active state from all buttons
+                filterBtns.forEach(b => {
+                    b.classList.remove('text-primary', 'border-b-2', 'border-primary', '-mb-[18px]');
+                    b.classList.add('text-[#221a10]/50');
+                });
+
+                // 2. Add active state to clicked button
+                btn.classList.add('text-primary', 'border-b-2', 'border-primary', '-mb-[18px]');
+                btn.classList.remove('text-[#221a10]/50');
+
+                // 3. Filter cards & Handle Layout Container
+                const filterValue = btn.getAttribute('data-filter');
+
+                roomCards.forEach(card => {
+                    // Start fade out animation
+                    card.classList.remove('opacity-100', 'scale-100');
+                    card.classList.add('opacity-0', 'scale-95');
+                    
+                    setTimeout(() => {
+                        const cardCategory = card.getAttribute('data-category');
+                        
+                        // Evaluar si coincide o mostrar todos
+                        if (filterValue === 'todas' || filterValue === cardCategory) {
+                            (card as HTMLElement).style.display = 'block';
+                            
+                            // Ajuste dinámico de distribución del contenedor
+                            if(roomsContainer) {
+                                if(filterValue === 'todas') {
+                                    roomsContainer.className = 'grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center max-w-4xl mx-auto';
+                                } else {
+                                    roomsContainer.className = 'flex flex-row flex-wrap justify-center items-stretch gap-10';
+                                }
+                            }
+                            
+                            // Short timeout to allow display:block to apply before animating in
+                            setTimeout(() => {
+                                card.classList.remove('opacity-0', 'scale-95');
+                                card.classList.add('opacity-100', 'scale-100');
+                            }, 50);
+                        } else {
+                            (card as HTMLElement).style.display = 'none';
+                        }
+                    }, 300); // Wait for fade out to complete before display none
+                });
+            });
+        });
+    });
+</script>
