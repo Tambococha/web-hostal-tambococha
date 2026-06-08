@@ -109,8 +109,8 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
         if (!btn || !menu) return;
 
         // Clonamos el botón para evitar que se acumulen event listeners con Astro ViewTransitions
-        const newBtn = btn.cloneNode(true);
-        btn.parentNode.replaceChild(newBtn, btn);
+        const newBtn = btn.cloneNode(true) as HTMLElement;
+        btn.parentNode?.replaceChild(newBtn, btn);
 
         newBtn.addEventListener('click', () => {
             const isClosed = menu.classList.contains('invisible');

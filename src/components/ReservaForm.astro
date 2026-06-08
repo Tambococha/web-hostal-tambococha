@@ -162,7 +162,7 @@
                     }
 
                     // Armar mensaje WhatsApp
-                    const mensajeWhatsApp = `*NUEVA CONSULTA DE DISPONIBILIDAD* 🛎️\n\nHola Hostal Tambococha, soy *${reservaData.cliente_nombre}* y quisiera saber si hay disponibilidad:\n\n🛏️ *Habitación:* ${reservaData.habitacion_tipo}\n📅 *In:* ${reservaData.checkin}\n📅 *Out:* ${reservaData.checkout}\n👤 *Huéspedes:* ${reservaData.huespedes}\n📞 *Teléfono:* ${telefonoFinal}`;
+                    const mensajeWhatsApp = `*NUEVA CONSULTA DE DISPONIBILIDAD* 🔔\n\nHola Hostal Tambococha, soy *${reservaData.cliente_nombre}* y quisiera saber si hay disponibilidad:\n\n📌 *Habitación:* ${reservaData.habitacion_tipo}\n📅 *In:* ${reservaData.checkin}\n📅 *Out:* ${reservaData.checkout}\n👥 *Huéspedes:* ${reservaData.huespedes}\n📞 *Teléfono:* ${telefonoFinal}`;
                     
                     const phone = "593985265183"; // Número oficial Hotel Tambococha
                     const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(mensajeWhatsApp)}`;
