@@ -26,4 +26,5 @@ Thumbs.db
 qa-test.js
 .cache_home/
 .playwright-mcp/
-*.log
+*.log.DS_Store
+.astro/
