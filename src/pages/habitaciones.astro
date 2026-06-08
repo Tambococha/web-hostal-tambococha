@@ -2,18 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 
-import habitacionSimpleImg from '../assets/photos/habitacion-simple.jpg';
-import habitacionMatrimonialImg from '../assets/photos/habitacion-matrimonial.jpg';
-import habitacionDobleTripleImg from '../assets/photos/habitacion-compartida.jpg';
+import habitacionSimpleImg from '../assets/photos/habitacion-simple-hostal-tambococha-01.jpg';
+import habitacionMatrimonialImg from '../assets/photos/habitacion-matrimonial-hostal-tambococha-01.jpg';
+import habitacionDobleTripleImg from '../assets/photos/habitacion-compartida-hostal-tambococha-01.jpg';
+import habitacionFamiliarImg from '../assets/photos/habitacion-familiar-hostal-tambococha-01.webp';
 ---
 
-<Layout title="Nuestras Habitaciones">
+<Layout title="Nuestras Habitaciones" description="Alojamiento con estándar de hotel en el Corazón de Paltas. Conoce nuestras habitaciones para tu mayor confort.">
     <section class="bg-background-light pt-24 md:pt-32 pb-10 md:pb-16 px-4 md:px-6 text-center">
         <div class="max-w-3xl mx-auto">
             <span class="mb-4 inline-block rounded-full bg-sage/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-sage">Nuestro Alojamiento</span>
             <h1 class="font-serif text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-earth">Nuestras <span class="italic text-primary">Habitaciones</span></h1>
             <p class="mt-6 text-lg leading-relaxed text-earth/80 font-medium max-w-2xl mx-auto">
-                Descubre la tranquilidad y el confort en el corazón de Catacocha. Espacios diseñados para tu descanso con vistas inigualables a los Andes ecuatorianos.
+                Descubre la tranquilidad y el confort en el corazón de Paltas. Espacios diseñados para tu descanso con vistas inigualables a los Andes ecuatorianos.
             </p>
         </div>
     </section>
@@ -33,7 +34,7 @@ import habitacionDobleTripleImg from '../assets/photos/habitacion-compartida.jpg
             <!-- Room 1: Simple -->
             <div data-category="simples" class="flex flex-col room-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-[#221a10]/5 opacity-100 scale-100 w-full max-w-[400px]">
                 <a href="/habitacionsingle" class="block relative aspect-[4/3] overflow-hidden cursor-pointer group-hover:opacity-90 transition-opacity">
-                    <Image alt="Habitación simple acogedora con cama individual y luz natural" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={habitacionSimpleImg}/>
+                    <Image alt="Habitación simple tipo hotel con cama individual en Catacocha" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={habitacionSimpleImg}/>
                     <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm">
                         <span class="text-xs font-bold text-sage uppercase tracking-wider">Habitación Simple</span>
                     </div>
@@ -75,7 +76,7 @@ import habitacionDobleTripleImg from '../assets/photos/habitacion-compartida.jpg
             <!-- Room 2: Matrimonial -->
             <div data-category="matrimoniales" class="flex flex-col room-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-[#221a10]/5 opacity-100 scale-100 w-full max-w-[400px]">
                 <a href="/habitacionmatrimonial" class="block relative aspect-[4/3] overflow-hidden cursor-pointer group-hover:opacity-90 transition-opacity">
-                    <Image alt="Habitación matrimonial premium con cama King y vista panorámica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={habitacionMatrimonialImg}/>
+                    <Image alt="Habitación matrimonial tipo hotel en Catacocha con vista panorámica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={habitacionMatrimonialImg}/>
                     <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full shadow-sm">
                         <span class="text-xs font-bold uppercase tracking-wider">Matrimonial</span>
                     </div>
@@ -159,8 +160,7 @@ import habitacionDobleTripleImg from '../assets/photos/habitacion-compartida.jpg
             <!-- Room 4: Familiar -->
             <div data-category="doble-triples" class="flex flex-col room-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-[#221a10]/5 opacity-100 scale-100 w-full max-w-[400px]">
                 <a href="/habitacionfamiliar" class="block relative aspect-[4/3] overflow-hidden cursor-pointer group-hover:opacity-90 transition-opacity">
-                    <!-- Usando la misma imagen de compartida por defecto -->
-                    <Image alt="Habitación familiar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={habitacionDobleTripleImg}/>
+                    <Image alt="Habitación familiar tipo hotel con camas amplias en Catacocha" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={habitacionFamiliarImg}/>
                     <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm">
                         <span class="text-xs font-bold text-sage uppercase tracking-wider">Habitación Familiar</span>
                     </div>

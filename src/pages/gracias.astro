@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="¡Mensaje Recibido!"
+  description="Hemos recibido tu consulta. Nuestro equipo del Hostal Tambococha te responderá a la brevedad posible."
+>
+  <section class="min-h-[80vh] lg:min-h-screen flex flex-col items-center justify-center px-4 pt-32 pb-24 bg-background-light">
+    <div class="w-full max-w-lg mx-auto text-center flex flex-col items-center">
+
+      <!-- Icono de confirmación -->
+      <div class="mb-10 md:mb-12 flex justify-center">
+        <div class="relative">
+          <!-- Halo exterior -->
+          <div class="absolute inset-0 rounded-full bg-sage/10 scale-150 animate-pulse-slow"></div>
+          <!-- Círculo principal -->
+          <div class="relative w-24 h-24 rounded-full bg-sage/15 flex items-center justify-center border-2 border-sage/30 shadow-lg shadow-sage/10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-11 h-11 text-sage"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M22 2 11 13"/>
+              <path d="M22 2 15 22 11 13 2 9l20-7z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenido de texto -->
+      <div class="space-y-6 mb-12 md:mb-14 flex flex-col items-center">
+        <span class="inline-block rounded-full bg-sage/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-sage">
+          Consulta Enviada
+        </span>
+        <h1 class="font-serif text-4xl md:text-5xl font-bold text-charcoal leading-tight mt-3">
+          ¡Mensaje <span class="italic">Recibido!</span>
+        </h1>
+        <p class="mt-4 text-base md:text-lg leading-relaxed text-earth/80 font-medium max-w-md mx-auto">
+          Gracias por contactarte con <strong class="text-earth font-semibold">Hostal Tambococha</strong>. Hemos recibido tu consulta y nuestro equipo te responderá a la brevedad posible al correo proporcionado.
+        </p>
+      </div>
+
+      <!-- Separador decorativo -->
+      <div class="flex items-center justify-center gap-3 mb-12 md:mb-14" aria-hidden="true">
+        <div class="h-px w-12 bg-earth/20 rounded-full"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-earth/30"></div>
+        <div class="h-px w-12 bg-earth/20 rounded-full"></div>
+      </div>
+
+      <!-- Botón de acción -->
+      <a
+        id="btn-volver-inicio"
+        href="/"
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-bold text-white transition-all duration-200 active:scale-95 shadow-md"
+        style="background-color: var(--color-earth, #8B7355);"
+        onmouseover="this.style.opacity='0.9'"
+        onmouseout="this.style.opacity='1'"
+      >
+        <span class="material-symbols-outlined text-[18px] leading-none">home</span>
+        <span>Volver al Inicio</span>
+      </a>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.5; transform: scale(1.5); }
+    50% { opacity: 0.15; transform: scale(1.65); }
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+</style>

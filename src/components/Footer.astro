@@ -2,19 +2,19 @@
 // Footer.astro
 import logoHotel from '../assets/logos/logo-tambococha.png';
 ---
-<footer class="bg-earth text-white/80 py-12 md:py-16 lg:py-20 px-4 md:px-6 lg:px-10">
+<footer class="bg-earth text-white/80 pt-12 pb-16 md:py-16 lg:py-20 px-4 md:px-6 lg:px-10">
     <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-12 lg:mb-16">
             <div class="space-y-4 md:space-y-6">
                 <div class="flex items-center gap-3">
-                    <img src={logoHotel.src} alt="Logo Hotel Tambococha" class="w-12 h-12 object-contain bg-white rounded-full p-1 drop-shadow-lg" />
+                    <img src={logoHotel.src} alt="Logo Hostal Tambococha" class="w-12 h-12 object-contain bg-white rounded-full p-1 drop-shadow-lg" />
                     <div class="flex flex-col leading-tight">
-                        <span class="text-xl font-extrabold tracking-tight text-white font-serif">Hotel Tambococha</span>
+                        <span class="text-xl font-extrabold tracking-tight text-white font-serif">Hostal Tambococha</span>
                         <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/60 font-sans">Catacocha - Ecuador</span>
                     </div>
                 </div>
                 <p class="text-sm leading-relaxed">
-                    Refugio de paz y tradición en el corazón de los Andes. Ofrecemos una experiencia única donde la historia de Catacocha se une a la comodidad moderna.
+                    Refugio de descanso y tradición en el corazón de Paltas. Ofrecemos una experiencia grata donde la historia de Catacocha se une a la comodidad para viajeros y familias.
                 </p>
             </div>
             
@@ -22,7 +22,7 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
                 <h5 class="text-white font-bold mb-4 md:mb-6 text-sm uppercase tracking-widest font-serif">Explorar</h5>
                 <ul class="space-y-4 text-sm">
                     <li><a class="hover:text-primary transition-colors" href="/habitaciones">Habitaciones</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="/">Nuestro Hotel</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="/">Nuestro Hostal</a></li>
                     <li><a class="hover:text-primary transition-colors" href="/actividades">Actividades</a></li>
                     <li><a class="hover:text-primary transition-colors" href="/ubicacion">Ubicación</a></li>
                     <li><a class="hover:text-primary transition-colors" href="/contacto">Contacto</a></li>
@@ -61,10 +61,12 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
         </div>
         
         <div class="pt-6 md:pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4 text-[10px] md:text-xs font-medium uppercase tracking-widest text-white/40">
-            <p class="leading-relaxed">© {new Date().getFullYear()} Hotel Tambococha. Todos los derechos reservados.</p>
+            <div class="flex flex-col md:items-start items-center gap-1">
+                <p class="leading-relaxed">© {new Date().getFullYear()} Hostal Tambococha. Todos los derechos reservados.</p>
+                <p class="text-[9px] text-white/20 normal-case tracking-normal">Tu opción preferida de hotel, hostal y alojamiento en Catacocha, Loja.</p>
+            </div>
             <div class="flex gap-6 md:gap-8">
-                <a class="hover:text-white transition-colors" href="#">Privacidad</a>
-                <a class="hover:text-white transition-colors" href="#">Términos</a>
+                <a class="hover:text-white transition-colors" href="/reglamento">Reglamento Interno</a>
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@ interface Props {
 
 const { 
 	title, 
-	description = "Alojamiento en Catacocha. Hotel Tambococha es tu refugio ideal en el centro histórico de Loja, Ecuador.", 
+	description = "Alojamiento en el corazón de Paltas. Hostal Tambococha es tu refugio de tradición y calma en Catacocha, Loja, Ecuador.", 
 	image = "/og-image.jpg" 
 } = Astro.props;
 ---
@@ -23,13 +23,13 @@ const {
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title ? `${title} | Hotel Tambococha` : 'Hotel Tambococha | Alojamiento en Catacocha, Loja, Ecuador'}</title>
+		<title>{title ? `${title} | Hostal Tambococha` : 'Hostal Tambococha | Alojamiento en el Corazón de Paltas, Ecuador'}</title>
 		<meta name="description" content={description} />
 		
 		<!-- Open Graph / SEO -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={Astro.url} />
-		<meta property="og:title" content={title ? `${title} | Hotel Tambococha` : 'Hotel Tambococha | Alojamiento en Catacocha, Loja, Ecuador'} />
+		<meta property="og:title" content={title ? `${title} | Hostal Tambococha` : 'Hostal Tambococha | Alojamiento en el Corazón de Paltas, Ecuador'} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={image} />
 		<meta property="og:locale" content="es_EC" />
@@ -38,8 +38,10 @@ const {
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
-				"@type": "Hotel",
-				"name": "Hotel Tambococha",
+				"@type": ["Hotel", "LodgingBusiness", "Hostel"],
+				"name": "Hostal Tambococha",
+				"description": "Tu opción preferida de hotel, hostal y alojamiento en Catacocha, Loja.",
+				"keywords": "Hotel, Accommodation, Hostal, Alojamiento, Catacocha",
 				"address": {
 					"@type": "PostalAddress",
 					"streetAddress": "25 de Junio y Lauro Guerrero (Frente a la Iglesia Matriz)",
@@ -63,19 +65,7 @@ const {
 		<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 		
-		<!-- Flatpickr (Calendario) -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-		<script is:inline src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-		<script is:inline src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
-		
-		<!-- intl-tel-input (Teléfono) -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.css">
-		<script is:inline src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
-		<style is:global>
-			.iti { width: 100%; }
-			.iti__country-list { z-index: 105; }
-			.iti__search-input { outline: none; }
-		</style>
+		<slot name="head" />
 	</head>
 	<body class="bg-background-light text-earth selection:bg-primary/30 min-h-screen flex flex-col">
 		<NavBar />

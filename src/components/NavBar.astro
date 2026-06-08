@@ -14,12 +14,12 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
                 <!-- TRUCO VIBE CODING: Usamos la etiqueta img clásica y llamamos al .src -->
                 <img 
                     src={logoHotel.src} 
-                    alt="Logo Hotel Tambococha" 
+                    alt="Logo Hostal Tambococha" 
                     class="w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14 object-contain group-hover:scale-110 transition-transform shrink-0"
                 />
                 
                 <div class="flex flex-col leading-tight min-w-0">
-                    <span class="text-sm md:text-xl font-extrabold tracking-tight text-earth font-serif truncate">Hotel Tambococha</span>
+                    <span class="text-sm md:text-xl font-extrabold tracking-tight text-earth font-serif truncate">Hostal Tambococha</span>
                     <span class="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.1em] md:tracking-[0.2em] text-earth/60 font-sans truncate">Catacocha - Ecuador</span>
                 </div>
             </a>
@@ -27,7 +27,7 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
 
         <!-- Desktop Navigation Links (Center) -->
         <nav class="hidden lg:flex flex-none items-center justify-center gap-3 xl:gap-8">
-            <a class="text-[10px] xl:text-xs font-bold hover:text-primary transition-colors uppercase tracking-widest whitespace-nowrap" href="/">Hotel</a>
+            <a class="text-[10px] xl:text-xs font-bold hover:text-primary transition-colors uppercase tracking-widest whitespace-nowrap" href="/">Hostal</a>
             <a class="text-[10px] xl:text-xs font-bold hover:text-primary transition-colors uppercase tracking-widest whitespace-nowrap" href="/actividades">Actividades</a>
             <a class="text-[10px] xl:text-xs font-bold hover:text-primary transition-colors uppercase tracking-widest whitespace-nowrap" href="/habitaciones">Habitaciones</a>
             <a class="text-[10px] xl:text-xs font-bold hover:text-primary transition-colors uppercase tracking-widest whitespace-nowrap" href="/ubicacion">Ubicación</a>
@@ -62,7 +62,7 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
     </div>
 
     <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="hidden lg:hidden absolute top-20 md:top-24 left-0 right-0 glass-nav border-b border-primary/10 shadow-2xl overflow-hidden transition-all duration-300">
+    <div id="mobile-menu" class="lg:hidden absolute top-20 md:top-24 left-0 right-0 glass-nav border-b border-primary/10 shadow-2xl overflow-hidden transition-all duration-300 ease-in-out transform -translate-y-4 opacity-0 pointer-events-none invisible">
         <nav class="flex flex-col px-4 md:px-6 py-6 pb-8 gap-5 h-[calc(100vh-80px)] md:h-[calc(100vh-96px)] overflow-y-auto">
             <a class="text-lg font-bold hover:text-primary transition-colors uppercase tracking-widest border-b border-earth/10 pb-4" href="/">Inicio</a>
             <a class="text-lg font-bold hover:text-primary transition-colors uppercase tracking-widest border-b border-earth/10 pb-4" href="/actividades">Actividades</a>
@@ -90,6 +90,12 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
                     <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
                 </a>
             </div>
+            <!-- Reglamento Interno Móvil -->
+            <div class="text-center mt-2 pb-6 border-t border-earth/5 pt-4">
+                <a href="/reglamento" class="inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-earth/40 hover:text-primary transition-colors">
+                    Reglamento Interno
+                </a>
+            </div>
         </nav>
     </div>
 </header>
@@ -107,19 +113,28 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
         btn.parentNode.replaceChild(newBtn, btn);
 
         newBtn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
+            const isClosed = menu.classList.contains('invisible');
             
-            const isOpen = !menu.classList.contains('hidden');
             const line1 = newBtn.querySelector('.line-1');
             const line2 = newBtn.querySelector('.line-2');
             const line3 = newBtn.querySelector('.line-3');
 
-            if (line1 && line2 && line3) {
-                if (isOpen) {
+            if (isClosed) {
+                // Open it smoothly
+                menu.classList.remove('invisible', 'opacity-0', 'pointer-events-none', '-translate-y-4');
+                menu.classList.add('visible', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
+                
+                if (line1 && line2 && line3) {
                     line1.classList.add('translate-y-2', 'rotate-45');
                     line2.classList.add('opacity-0');
                     line3.classList.add('-translate-y-2', '-rotate-45');
-                } else {
+                }
+            } else {
+                // Close it smoothly
+                menu.classList.remove('visible', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
+                menu.classList.add('invisible', 'opacity-0', 'pointer-events-none', '-translate-y-4');
+                
+                if (line1 && line2 && line3) {
                     line1.classList.remove('translate-y-2', 'rotate-45');
                     line2.classList.remove('opacity-0');
                     line3.classList.remove('-translate-y-2', '-rotate-45');
@@ -130,6 +145,4 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
 
     // Inicializar en primera carga
     setupMobileMenu();
-    // Inicializar en cada navegación si se usa ViewTransitions
-    document.addEventListener('astro:page-load', setupMobileMenu);
 </script>

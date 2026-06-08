@@ -1,0 +1,16 @@
+---
+// src/components/BookingScripts.astro
+---
+<!-- Flatpickr (Calendario) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script is:inline src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script is:inline src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+
+<!-- intl-tel-input (Teléfono) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.css">
+<script is:inline src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
+<style is:global>
+    .iti { width: 100%; }
+    .iti__country-list { z-index: 105; }
+    .iti__search-input { outline: none; }
+</style>

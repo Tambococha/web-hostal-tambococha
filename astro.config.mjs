@@ -7,5 +7,7 @@ import netlify from '@astrojs/netlify';
 export default defineConfig({
   integrations: [tailwind(), react()],
   output: 'static',
-  adapter: netlify(),
+  adapter: netlify({
+    imageCDN: false,
+  }),
 });

@@ -1,58 +1,67 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import { WA_URL } from '../config/hotel';
 
-// Foto del Hero
-import heroBg from '../assets/photos/hero-tambococha.jpg';
+// Fotos del Hero Carrusel
+import heroSlide1 from '../assets/photos/hostal-tambococha-balcon.webp';
+import heroSlide2 from '../assets/photos/hostal-tambococha-catacocha-frontis.webp';
+import heroSlide3 from '../assets/photos/hostal-tambococha-catacocha-vista-ciudad.webp';
 // NUEVA FOTO: Fachada / Esencia
-import hotelFront from '../assets/photos/hotel-front_02.jpg';
+import hotelFront from '../assets/photos/hostal-tambococha-catacocha.webp';
 import mapBg from '../assets/photos/catacocha-satelital-bn.jpg';
-import habitacionSimpleImg from '../assets/photos/habitacion-simple.jpg';
-import habitacionMatrimonialImg from '../assets/photos/habitacion-matrimonial.jpg';
-import habitacionDobleTripleImg from '../assets/photos/habitacion-compartida.jpg';
+import habitacionSimpleImg from '../assets/photos/habitacion-simple-hostal-tambococha-01.jpg';
+import habitacionMatrimonialImg from '../assets/photos/habitacion-matrimonial-hostal-tambococha-01.jpg';
+import habitacionDobleTripleImg from '../assets/photos/habitacion-compartida-hostal-tambococha-01.jpg';
 import miradorShiriculapoImg from '../assets/photos/mirador-shiriculapo.jpg';
 import catacochaSenderismoImg from '../assets/photos/catacocha-senderismo.jpg';
 import reservaPisacaImg from '../assets/photos/reserva-pisaca.jpg';
 ---
 
-<Layout title="Bienvenidos | Hotel Tambococha">
+<Layout title="Bienvenidos | Hostal Tambococha" description="La mejor alternativa a un hotel en Catacocha. Alojamiento con estándar de hotel en el Corazón de Paltas.">
     <!-- Hero Section -->
     <section class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden pt-20">
-        <div class="absolute inset-0">
-            <!-- Capa oscura para que el texto sea legible -->
-            <div class="absolute inset-0 bg-black/40 z-10"></div>
+        <div class="absolute inset-0 bg-black" id="hero-carousel">
+            <!-- Filtro Vibe Warm/Sepia unificador -->
+            <div class="absolute inset-0 bg-black/40 z-10 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-amber-900/20 z-10 pointer-events-none mix-blend-multiply" style="backdrop-filter: sepia(20%) brightness(0.8);"></div>
             
-            <!-- AQUÍ INYECTAMOS TU FOTO LOCAL OPTIMIZADA -->
-            <!-- loading="eager" le dice al navegador que la cargue de inmediato porque es lo primero que se ve -->
-            <Image 
-                src={heroBg}
-                alt="Exteriores de Hotel Tambococha rodeado de montañas andinas en Catacocha" 
-                class="w-full h-full object-cover object-[50%_20%] scale-105" <!-- Ajusta el 30% a tu gusto -->
-                quality="high"
-                loading="eager"
-            />
+            <!-- Slides del Carrusel -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 z-0">
+                <Image src={heroSlide1} alt="Balcón tradicional del Hostal Tambococha" class="w-full h-full object-cover scale-105" quality="high" loading="eager" fetchpriority="high" />
+            </div>
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0">
+                <Image src={heroSlide2} alt="Frontis del Hostal Tambococha en Catacocha" class="w-full h-full object-cover object-[50%_70%] scale-105" quality="high" loading="lazy" />
+            </div>
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0">
+                <Image src={heroSlide3} alt="Vista panorámica de la ciudad de Catacocha desde el cerro Pisaca" class="w-full h-full object-cover scale-105" quality="high" loading="lazy" />
+            </div>
         </div>
         
         <div class="relative z-20 text-center px-4 max-w-5xl">
-            <h1 class="font-serif text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-white mb-6 drop-shadow-2xl">
-                Descansa cómodamente en el Corazón de Catacocha
+            <h1 class="font-serif text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-white mb-6 drop-shadow-2xl animate-fade-in-up-title">
+                Descansa cómodamente en Catacocha
             </h1>
-            <p class="text-white/95 text-lg md:text-2xl font-light mb-10 max-w-3xl mx-auto">
-                Tradición y calma se encuentran en el Balcón de los Andes.
+            <p class="text-white/95 text-lg md:text-2xl font-light mb-10 max-w-3xl mx-auto animate-fade-in-up-desc">
+                Tradición y calma se encuentran en el corazón de Paltas.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="/habitaciones" class="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto px-8 md:px-12 py-4 md:py-5 rounded-xl font-bold text-base md:text-lg transition-transform hover:scale-105 shadow-2xl inline-block">
+            <div class="flex justify-center items-center animate-fade-in-up-cta">
+                <a href="/habitaciones" class="bg-primary hover:bg-primary/90 text-white w-fit px-8 md:px-12 py-4 md:py-5 rounded-xl font-bold text-base md:text-lg transition-transform hover:scale-105 shadow-2xl inline-block">
                     Reserva Ahora
-                </a>
-                <a href="#nuestra-esencia" class="bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20 text-white w-full sm:w-auto px-8 md:px-12 py-4 md:py-5 rounded-xl font-bold text-base md:text-lg transition-transform hover:scale-105 shadow-2xl inline-block">
-                    Conoce Más
                 </a>
             </div>
         </div>
         
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+        <!-- Controles del Carrusel (Dots) -->
+        <div class="absolute inset-x-0 mx-auto w-fit bottom-28 z-20 flex gap-4">
+            <button aria-label="Ver imagen 1" class="carousel-dot w-3 h-3 rounded-full bg-primary transition-colors cursor-pointer"></button>
+            <button aria-label="Ver imagen 2" class="carousel-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors cursor-pointer"></button>
+            <button aria-label="Ver imagen 3" class="carousel-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors cursor-pointer"></button>
+        </div>
+
+        <div class="absolute inset-x-0 mx-auto w-fit bottom-10 z-20 animate-bounce">
             <a href="#nuestra-esencia" aria-label="Bajar a la siguiente sección">
-                <span class="material-symbols-outlined text-white text-4xl">expand_more</span>
+                <span class="material-symbols-outlined text-white text-4xl hover:text-primary transition-colors">expand_more</span>
             </a>
         </div>
     </section>
@@ -64,11 +73,17 @@ import reservaPisacaImg from '../assets/photos/reserva-pisaca.jpg';
                 <div class="absolute -top-4 -left-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl"></div>
                 
                 <!-- AQUÍ INYECTAMOS LA NUEVA FOTO OPTIMIZADA -->
-                <Image 
-                    src={hotelFront} 
-                    alt="Fachada y arquitectura tradicional del Hotel Tambococha en Catacocha" 
-                    class="rounded-2xl shadow-2xl relative z-10 w-full aspect-[4/3] object-cover" 
-                />
+                <div class="relative z-10 rounded-2xl shadow-2xl overflow-hidden w-full aspect-[4/3] bg-amber-950">
+                    <Image 
+                        src={hotelFront} 
+                        alt="Entrada del Hostal Tambococha en Catacocha" 
+                        class="w-full h-full object-cover object-[70%_30%] sepia-[60%] brightness-[0.9] saturate-[0.8]" 
+                    />
+                    <!-- Filtro ocre opaco -->
+                    <div class="absolute inset-0 bg-[#8b5a2b]/25 mix-blend-multiply pointer-events-none"></div>
+                    <!-- Efecto Viñeta (Bordes oscurecidos de cámara antigua) -->
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_60%,rgba(0,0,0,0.55)_100%)] mix-blend-multiply pointer-events-none"></div>
+                </div>
                 
                 <div class="absolute -bottom-8 -right-8 bg-background-light p-6 rounded-2xl shadow-xl hidden lg:block z-20">
                     <p class="text-primary font-serif font-bold text-4xl">20+</p>
@@ -81,7 +96,7 @@ import reservaPisacaImg from '../assets/photos/reserva-pisaca.jpg';
                     Patrimonio y Hospitalidad en Armonía
                 </h2>
                 <p class="text-earth/70 text-lg leading-relaxed">
-                    Ubicado en el centro fundacional de la emblemática ciudad de Catacocha, el Hotel Tambococha es el refugio ideal para viajeros y familias. Construido para integrarse con el paisaje tradicional, ofrecemos una experiencia donde la comodidad se enriquece con nuestra historia y sus paisajes.
+                    Ubicado en el centro histórico de la emblemática ciudad de Catacocha, el Hostal Tambococha es el refugio ideal para viajeros y familias. Construido para integrarse con el paisaje tradicional, ofrecemos una experiencia donde la comodidad se enriquece con nuestra historia y sus paisajes.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
                     <div class="flex flex-col gap-2">
@@ -110,7 +125,7 @@ import reservaPisacaImg from '../assets/photos/reserva-pisaca.jpg';
             <div class="flex flex-row flex-wrap justify-center gap-8 lg:gap-12">
                 <a href="/habitacionsingle" class="group block w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)]">
                     <div class="relative overflow-hidden rounded-2xl mb-5 aspect-[4/5]">
-                        <Image alt="Habitación Simple con decoraciones locales" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={habitacionSimpleImg}/>
+                        <Image alt="Habitación Simple tipo hotel en Catacocha con decoraciones locales" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={habitacionSimpleImg}/>
                         <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-earth">Ideal Viajeros</div>
                     </div>
                     <div class="space-y-2">
@@ -126,7 +141,7 @@ import reservaPisacaImg from '../assets/photos/reserva-pisaca.jpg';
                 </a>
                 <a href="/habitacionmatrimonial" class="group block w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)]">
                     <div class="relative overflow-hidden rounded-2xl mb-5 aspect-[4/5]">
-                        <Image alt="Confortable Habitación Matrimonial" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={habitacionMatrimonialImg}/>
+                        <Image alt="Confortable Habitación Matrimonial con estándar de hotel en Catacocha" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={habitacionMatrimonialImg}/>
                     </div>
                     <div class="space-y-2">
                         <div class="flex justify-between items-center">
@@ -220,7 +235,7 @@ import reservaPisacaImg from '../assets/photos/reserva-pisaca.jpg';
                     <!-- AQUÍ VA TU MAPA SATELITAL EN B/N OPTIMIZADO -->
                     <Image 
                         src={mapBg} 
-                        alt="Mapa satelital de Catacocha, ubicación exacta del Hotel Tambococha" 
+                        alt="Mapa satelital de Catacocha, ubicación exacta del Hostal Tambococha" 
                         class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale" 
                     />
                     
@@ -258,7 +273,7 @@ import reservaPisacaImg from '../assets/photos/reserva-pisaca.jpg';
                 </div>
             </div>
             <div class="mt-14 flex flex-wrap gap-4">
-                <a href="https://wa.me/56995937066" target="_blank" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl flex items-center gap-3 font-bold transition-transform hover:scale-105 shadow-xl">
+                <a href={WA_URL} target="_blank" rel="noopener noreferrer" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl flex items-center gap-3 font-bold transition-transform hover:scale-105 shadow-xl">
                     <span class="material-symbols-outlined">chat</span>
                     WhatsApp Directo
                 </a>
@@ -270,3 +285,88 @@ import reservaPisacaImg from '../assets/photos/reserva-pisaca.jpg';
         </div>
     </section>
 </Layout>
+
+<script>
+    const initHeroCarousel = () => {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        if (!slides.length || !dots.length) return;
+
+        let currentSlide = 0;
+        let slideInterval;
+
+        const showSlide = (index) => {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.remove('opacity-0');
+                    slide.classList.add('opacity-100');
+                    dots[i].classList.remove('bg-white/50');
+                    dots[i].classList.add('bg-primary');
+                } else {
+                    slide.classList.remove('opacity-100');
+                    slide.classList.add('opacity-0');
+                    dots[i].classList.remove('bg-primary');
+                    dots[i].classList.add('bg-white/50');
+                }
+            });
+            currentSlide = index;
+        };
+
+        const nextSlide = () => {
+            showSlide((currentSlide + 1) % slides.length);
+        };
+
+        const startCarousel = () => {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 10000);
+        };
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                startCarousel(); // Reinicia el timer al hacer click manual
+            });
+        });
+
+        // Inicializar
+        showSlide(0);
+        startCarousel();
+    };
+
+    // Ejecutar directamente (Astro procesa los scripts como módulos defer cuando el DOM está listo)
+    initHeroCarousel();
+</script>
+
+<style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translate3d(0, 50px, 0);
+        }
+        to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .animate-fade-in-up-title {
+        opacity: 0;
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        animation: fadeInUp 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+    }
+
+    .animate-fade-in-up-desc {
+        opacity: 0;
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        animation: fadeInUp 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.2s forwards;
+    }
+
+    .animate-fade-in-up-cta {
+        opacity: 0;
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        animation: fadeInUp 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.4s forwards;
+    }
+</style>

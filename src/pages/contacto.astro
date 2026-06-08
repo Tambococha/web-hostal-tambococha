@@ -6,9 +6,9 @@ import Layout from '../layouts/Layout.astro';
     <section class="bg-background-light pt-24 md:pt-32 pb-10 md:pb-16 px-4 md:px-6 border-b border-earth/10">
         <div class="max-w-7xl mx-auto text-center">
             <span class="mb-4 inline-block rounded-full bg-sage/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-sage">Atención al Cliente</span>
-            <h1 class="font-serif text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-charcoal">Ponte en <span class="italic">Contacto</span></h1>
+            <h1 class="font-serif text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-charcoal">Ponte en <span class="italic text-primary">Contacto</span></h1>
             <p class="mt-6 text-lg leading-relaxed text-earth/80 font-medium max-w-2xl mx-auto">
-                Estamos aquí para hacer de su estadía una experiencia inolvidable en el corazón de Catacocha. Permítanos asistirle en cada detalle de su viaje.
+                Tu espacio para consultas no relacionadas con reservas. Escríbenos para resolver dudas de itinerario, servicios especiales o hacernos llegar tus impresiones sobre nuestra atención. Tu opinión es fundamental para mejorar nuestro servicio.
             </p>
         </div>
     </section>
@@ -79,7 +79,7 @@ import Layout from '../layouts/Layout.astro';
                     <input type="hidden" name="access_key" value="c4c7a065-19f3-4dea-a2a1-9ff8ae6b095c">
                     <input type="hidden" name="subject" value="Nuevo Mensaje de Contacto - Sitio Web Tambococha">
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                    <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                    <input type="hidden" name="redirect" value="https://hostaltambococha.com/gracias">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="text-xs font-bold uppercase tracking-wider text-earth/70" for="name">Nombre Completo</label>
@@ -92,12 +92,35 @@ import Layout from '../layouts/Layout.astro';
                     </div>
                     <div class="space-y-2">
                         <label class="text-xs font-bold uppercase tracking-wider text-earth/70" for="subject">Asunto</label>
-                        <input class="w-full bg-background-light border-earth/10 rounded-lg focus:ring-primary focus:border-primary p-3 transition-all" id="subject" name="asunto" placeholder="¿Cómo podemos ayudarle?" type="text" required/>
+                        <select class="w-full bg-background-light border-earth/10 rounded-lg focus:ring-primary focus:border-primary p-3 truncate pr-10 transition-all appearance-none" id="subject" name="asunto" required>
+                            <option value="" disabled selected>¿En qué temática podemos ayudarte?</option>
+                            <option value="Logística, transporte y cómo llegar">Logística, transporte y cómo llegar</option>
+                            <option value="Servicios adicionales y equipamiento">Servicios adicionales y equipamiento</option>
+                            <option value="Normas de uso, políticas y reglamentos">Normas de uso, políticas y reglamentos</option>
+                            <option value="Sugerencias, comentarios o reporte de experiencia">Sugerencias, comentarios o reporte de experiencia</option>
+                            <option value="Consultas generales sobre el entorno y servicios">Consultas generales sobre el entorno y servicios</option>
+                        </select>
                     </div>
                     <div class="space-y-2">
                         <label class="text-xs font-bold uppercase tracking-wider text-earth/70" for="message">Mensaje</label>
                         <textarea class="w-full bg-background-light border-earth/10 rounded-lg focus:ring-primary focus:border-primary p-3 transition-all resize-none" id="message" name="mensaje" placeholder="Escriba su consulta detallada aquí..." rows="5" required></textarea>
                     </div>
+
+                    <!-- Disclaimer de Tarifas Especiales -->
+                    <div class="flex gap-3 items-start rounded-xl border border-amber-200 bg-amber-50/60 p-4">
+                        <span class="mt-0.5 shrink-0 text-amber-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>
+                            </svg>
+                        </span>
+                        <div class="flex flex-col gap-1">
+                            <p class="text-[10px] font-black uppercase tracking-widest text-amber-700 leading-none">Nota sobre fechas especiales</p>
+                            <p class="text-[11px] text-amber-800/80 leading-relaxed font-medium">
+                                En festividades locales (25 de junio y diciembre), las tarifas finales dependen de la confirmación manual del Hostal Tambococha.
+                            </p>
+                        </div>
+                    </div>
+
                     <button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-lg transition-all transform active:scale-95 shadow-lg shadow-primary/20 flex items-center justify-center gap-2" type="submit">
                         <span>Enviar Mensaje</span>
                         <span class="material-symbols-outlined text-sm">send</span>

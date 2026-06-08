@@ -1,0 +1,12 @@
+---
+// src/components/ServiceBadge.astro
+interface Props {
+    icon: string;
+    text: string;
+}
+const { icon, text } = Astro.props;
+---
+<div class="flex items-center gap-3 px-5 py-4 rounded-xl bg-white border border-earth/5 shadow-sm">
+    <span class="material-symbols-outlined text-sage">{icon}</span>
+    <span class="text-sm font-bold text-earth/80">{text}</span>
+</div>
