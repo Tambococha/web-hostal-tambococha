@@ -390,21 +390,28 @@ export const initBookingLogic = async (config: BookingConfig) => {
         console.error(err);
       }
       const shortName = config.tipoHabitacion.replace('Habitación ', '');
-      const eCampana = String.fromCodePoint(0x1F514);
-      const ePin = String.fromCodePoint(0x1F4CC);
-      const eCalendario = String.fromCodePoint(0x1F4C5);
-      const ePax = String.fromCodePoint(0x1F465);
-      const eDinero = String.fromCodePoint(0x1F4B0);
+      const eCampana = "%F0%9F%94%94";
+      const ePin = "%F0%9F%93%8C";
+      const eCalendario = "%F0%9F%93%85";
+      const ePax = "%F0%9F%91%A5";
+      const eDinero = "%F0%9F%92%B0";
 
-      const msg = `*NUEVA PRE-RESERVA* ${eCampana}\n\nHola, soy *${clientName}* (${clientPhone}).\nQuiero confirmar:\n\n${ePin} *Hab:* ${shortName}\n${eCalendario} *In:* ${checkin.value}\n${eCalendario} *Out:* ${checkout.value}\n${eCalendario} *Noches:* ${totalNoches}\n${ePax} *Pax:* ${huespedes.value}\n\n${eDinero} *Total allá:* $${totalPrecio} USD`;
+      // Codificar variables individualmente primero
+      const nameEnc = encodeURIComponent(clientName);
+      const phoneEnc = encodeURIComponent(clientPhone);
+      const roomEnc = encodeURIComponent(shortName);
+      const checkinEnc = encodeURIComponent(checkin.value);
+      const checkoutEnc = encodeURIComponent(checkout.value);
+      const nightsEnc = encodeURIComponent(totalNoches);
+      const paxEnc = encodeURIComponent(huespedes.value);
+      const totalEnc = encodeURIComponent(totalPrecio);
+
+      const whatsappUrl = `https://wa.me/${WA_NUMBER}?text=%2ANUEVA%20PRE-RESERVA%2A%20${eCampana}%0A%0AHola%2C%20soy%20%2A${nameEnc}%2A%20%28${phoneEnc}%29.%0AQuiero%20confirmar%3A%0A%0A${ePin}%20%2AHab%3A%2A%20${roomEnc}%0A${eCalendario}%20%2AIn%3A%2A%20${checkinEnc}%0A${eCalendario}%20%2AOut%3A%2A%20${checkoutEnc}%0A${eCalendario}%20%2ANoches%3A%2A%20${nightsEnc}%0A${ePax}%20%2APax%3A%2A%20${paxEnc}%0A%0A${eDinero}%20%2ATotal%20all%C3%A1%3A%2A%20%24${totalEnc}%20USD`;
 
       btnWa.innerHTML = originalText;
-      btnWa.style.opacity = '1';
-      btnWa.style.pointerEvents = 'auto';
-      window.open(
-        `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`,
-        '_blank'
-      );
+      btnWa.style.opacity = "1";
+      btnWa.style.pointerEvents = "auto";
+      window.open(whatsappUrl, '_blank');
       toggleModal(false);
       setTimeout(() => window.location.reload(), 1500);
     });

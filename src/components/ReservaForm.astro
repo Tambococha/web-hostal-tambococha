@@ -162,16 +162,21 @@
                     }
 
                     // Armar mensaje WhatsApp
-                    const eCampana = String.fromCodePoint(0x1F514);
-                    const ePin = String.fromCodePoint(0x1F4CC);
-                    const eCalendario = String.fromCodePoint(0x1F4C5);
-                    const ePax = String.fromCodePoint(0x1F465);
-                    const eTelefono = String.fromCodePoint(0x1F4DE);
+                    const eCampana = "%F0%9F%94%94";
+                    const ePin = "%F0%9F%93%8C";
+                    const eCalendario = "%F0%9F%93%85";
+                    const ePax = "%F0%9F%91%A5";
+                    const eTelefono = "%F0%9F%93%9E";
 
-                    const mensajeWhatsApp = `*NUEVA CONSULTA DE DISPONIBILIDAD* ${eCampana}\n\nHola Hostal Tambococha, soy *${reservaData.cliente_nombre}* y quisiera saber si hay disponibilidad:\n\n${ePin} *Habitación:* ${reservaData.habitacion_tipo}\n${eCalendario} *In:* ${reservaData.checkin}\n${eCalendario} *Out:* ${reservaData.checkout}\n${ePax} *Huéspedes:* ${reservaData.huespedes}\n${eTelefono} *Teléfono:* ${telefonoFinal}`;
-                    
+                    const nameEnc = encodeURIComponent(reservaData.cliente_nombre);
+                    const roomEnc = encodeURIComponent(reservaData.habitacion_tipo);
+                    const checkinEnc = encodeURIComponent(reservaData.checkin);
+                    const checkoutEnc = encodeURIComponent(reservaData.checkout);
+                    const paxEnc = encodeURIComponent(reservaData.huespedes);
+                    const phoneEnc = encodeURIComponent(telefonoFinal);
+
                     const phone = "593985265183"; // Número oficial Hotel Tambococha
-                    const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(mensajeWhatsApp)}`;
+                    const whatsappUrl = `https://wa.me/${phone}?text=%2ANUEVA%20CONSULTA%20DE%20DISPONIBILIDAD%2A%20${eCampana}%0A%0AHola%20Hostal%20Tambococha%2C%20soy%20%2A${nameEnc}%2A%20y%20quisiera%20saber%20si%20hay%20disponibilidad%3A%0A%0A${ePin}%20%2AHabitaci%C3%B3n%3A%2A%20${roomEnc}%0A${eCalendario}%20%2AIn%3A%2A%20${checkinEnc}%0A${eCalendario}%20%2AOut%3A%2A%20${checkoutEnc}%0A${ePax}%20%2AHu%C3%A9spedes%3A%2A%20${paxEnc}%0A${eTelefono}%20%2ATel%C3%E9fono%3A%2A%20${phoneEnc}`;
                     
                     setTimeout(() => {
                         window.open(whatsappUrl, '_blank');
