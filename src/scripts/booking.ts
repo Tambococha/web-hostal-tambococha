@@ -389,9 +389,14 @@ export const initBookingLogic = async (config: BookingConfig) => {
       } catch (err) {
         console.error(err);
       }
-
       const shortName = config.tipoHabitacion.replace('Habitación ', '');
-      const msg = `*NUEVA PRE-RESERVA* \u{1F514}\n\nHola, soy *${clientName}* (${clientPhone}).\nQuiero confirmar:\n\n\u{1F4CC} *Hab:* ${shortName}\n\u{1F4C5} *In:* ${checkin.value}\n\u{1F4C5} *Out:* ${checkout.value}\n\u{1F4C5} *Noches:* ${totalNoches}\n\u{1F465} *Pax:* ${huespedes.value}\n\n\u{1F4B0} *Total allá:* $${totalPrecio} USD`;
+      const eCampana = String.fromCodePoint(0x1F514);
+      const ePin = String.fromCodePoint(0x1F4CC);
+      const eCalendario = String.fromCodePoint(0x1F4C5);
+      const ePax = String.fromCodePoint(0x1F465);
+      const eDinero = String.fromCodePoint(0x1F4B0);
+
+      const msg = `*NUEVA PRE-RESERVA* ${eCampana}\n\nHola, soy *${clientName}* (${clientPhone}).\nQuiero confirmar:\n\n${ePin} *Hab:* ${shortName}\n${eCalendario} *In:* ${checkin.value}\n${eCalendario} *Out:* ${checkout.value}\n${eCalendario} *Noches:* ${totalNoches}\n${ePax} *Pax:* ${huespedes.value}\n\n${eDinero} *Total allá:* $${totalPrecio} USD`;
 
       btnWa.innerHTML = originalText;
       btnWa.style.opacity = '1';
