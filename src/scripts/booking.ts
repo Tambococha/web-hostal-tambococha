@@ -391,7 +391,7 @@ export const initBookingLogic = async (config: BookingConfig) => {
       }
 
       const shortName = config.tipoHabitacion.replace('Habitación ', '');
-      const msg = `*NUEVA PRE-RESERVA* 🔔\n\nHola, soy *${clientName}* (${clientPhone}).\nQuiero confirmar:\n\n📌 *Hab:* ${shortName}\n📅 *In:* ${checkin.value}\n📅 *Out:* ${checkout.value}\n📅 *Noches:* ${totalNoches}\n👥 *Pax:* ${huespedes.value}\n\n💰 *Total allá:* $${totalPrecio} USD`;
+      const msg = `*NUEVA PRE-RESERVA* \u{1F514}\n\nHola, soy *${clientName}* (${clientPhone}).\nQuiero confirmar:\n\n\u{1F4CC} *Hab:* ${shortName}\n\u{1F4C5} *In:* ${checkin.value}\n\u{1F4C5} *Out:* ${checkout.value}\n\u{1F4C5} *Noches:* ${totalNoches}\n\u{1F465} *Pax:* ${huespedes.value}\n\n\u{1F4B0} *Total allá:* $${totalPrecio} USD`;
 
       btnWa.innerHTML = originalText;
       btnWa.style.opacity = '1';
