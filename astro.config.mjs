@@ -10,4 +10,12 @@ export default defineConfig({
   adapter: netlify({
     imageCDN: false,
   }),
+  vite: {
+    build: {
+      minify: "esbuild",
+    },
+    esbuild: {
+      charset: "ascii",
+    },
+  },
 });

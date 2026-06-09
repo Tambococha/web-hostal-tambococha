@@ -390,13 +390,15 @@ export const initBookingLogic = async (config: BookingConfig) => {
         console.error(err);
       }
       const shortName = config.tipoHabitacion.replace('Habitación ', '');
-      const eCampana = "%F0%9F%94%94";
-      const ePin = "%F0%9F%93%8C";
-      const eCalendario = "%F0%9F%93%85";
-      const ePax = "%F0%9F%91%A5";
-      const eDinero = "%F0%9F%92%B0";
+      const pct = (...bytes: number[]) => bytes.map((b) => "%" + b.toString(16).toUpperCase().padStart(2, "0")).join("");
+      const EMOJI = {
+        bell: pct(0xf0, 0x9f, 0x94, 0x94),
+        pin: pct(0xf0, 0x9f, 0x93, 0x8c),
+        calendar: pct(0xf0, 0x9f, 0x93, 0x85),
+        person: pct(0xf0, 0x9f, 0x91, 0xa5),
+        money: pct(0xf0, 0x9f, 0x92, 0xb0),
+      };
 
-      // Codificar variables individualmente primero
       const nameEnc = encodeURIComponent(clientName);
       const phoneEnc = encodeURIComponent(clientPhone);
       const roomEnc = encodeURIComponent(shortName);
@@ -406,7 +408,7 @@ export const initBookingLogic = async (config: BookingConfig) => {
       const paxEnc = encodeURIComponent(huespedes.value);
       const totalEnc = encodeURIComponent(totalPrecio);
 
-      const whatsappUrl = `https://wa.me/${WA_NUMBER}?text=%2ANUEVA%20PRE-RESERVA%2A%20${eCampana}%0A%0AHola%2C%20soy%20%2A${nameEnc}%2A%20%28${phoneEnc}%29.%0AQuiero%20confirmar%3A%0A%0A${ePin}%20%2AHab%3A%2A%20${roomEnc}%0A${eCalendario}%20%2AIn%3A%2A%20${checkinEnc}%0A${eCalendario}%20%2AOut%3A%2A%20${checkoutEnc}%0A${eCalendario}%20%2ANoches%3A%2A%20${nightsEnc}%0A${ePax}%20%2APax%3A%2A%20${paxEnc}%0A%0A${eDinero}%20%2ATotal%20all%C3%A1%3A%2A%20%24${totalEnc}%20USD`;
+      const whatsappUrl = `https://wa.me/${WA_NUMBER}?text=%2ANUEVA%20PRE-RESERVA%2A%20${EMOJI.bell}%0A%0AHola%2C%20soy%20%2A${nameEnc}%2A%20%28${phoneEnc}%29.%0AQuiero%20confirmar%3A%0A%0A${EMOJI.pin}%20%2AHab%3A%2A%20${roomEnc}%0A${EMOJI.calendar}%20%2AIn%3A%2A%20${checkinEnc}%0A${EMOJI.calendar}%20%2AOut%3A%2A%20${checkoutEnc}%0A${EMOJI.calendar}%20%2ANoches%3A%2A%20${nightsEnc}%0A${EMOJI.person}%20%2APax%3A%2A%20${paxEnc}%0A%0A${EMOJI.money}%20%2ATotal%20all%C3%A1%3A%2A%20%24${totalEnc}%20USD`;
 
       btnWa.innerHTML = originalText;
       btnWa.style.opacity = "1";

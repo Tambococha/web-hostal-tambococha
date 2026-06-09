@@ -134,10 +134,10 @@
 
             const reservaData = {
                 // Adaptar nombres para que coincidan con BD
-                cliente_nombre: formData.get('nombre_huesped'),
-                habitacion_tipo: formData.get('habitacion_id'),
-                checkin: formData.get('fecha_entrada'),
-                checkout: formData.get('fecha_salida'),
+                cliente_nombre: formData.get('nombre_huesped') as string,
+                habitacion_tipo: formData.get('habitacion_id') as string,
+                checkin: formData.get('fecha_entrada') as string,
+                checkout: formData.get('fecha_salida') as string,
                 huespedes: parseInt(formData.get('cantidad_personas') as string, 10),
                 telefono: telefonoFinal,
                 estado: "pendiente"
@@ -162,11 +162,14 @@
                     }
 
                     // Armar mensaje WhatsApp
-                    const eCampana = "%F0%9F%94%94";
-                    const ePin = "%F0%9F%93%8C";
-                    const eCalendario = "%F0%9F%93%85";
-                    const ePax = "%F0%9F%91%A5";
-                    const eTelefono = "%F0%9F%93%9E";
+                    const pct = (...bytes) => bytes.map((b) => "%" + b.toString(16).toUpperCase().padStart(2, "0")).join("");
+                    const EMOJI = {
+                        bell: pct(0xf0, 0x9f, 0x94, 0x94),
+                        pin: pct(0xf0, 0x9f, 0x93, 0x8c),
+                        calendar: pct(0xf0, 0x9f, 0x93, 0x85),
+                        person: pct(0xf0, 0x9f, 0x91, 0xa5),
+                        phone: pct(0xf0, 0x9f, 0x93, 0x9e),
+                    };
 
                     const nameEnc = encodeURIComponent(reservaData.cliente_nombre);
                     const roomEnc = encodeURIComponent(reservaData.habitacion_tipo);
@@ -175,8 +178,8 @@
                     const paxEnc = encodeURIComponent(reservaData.huespedes);
                     const phoneEnc = encodeURIComponent(telefonoFinal);
 
-                    const phone = "593985265183"; // Número oficial Hotel Tambococha
-                    const whatsappUrl = `https://wa.me/${phone}?text=%2ANUEVA%20CONSULTA%20DE%20DISPONIBILIDAD%2A%20${eCampana}%0A%0AHola%20Hostal%20Tambococha%2C%20soy%20%2A${nameEnc}%2A%20y%20quisiera%20saber%20si%20hay%20disponibilidad%3A%0A%0A${ePin}%20%2AHabitaci%C3%B3n%3A%2A%20${roomEnc}%0A${eCalendario}%20%2AIn%3A%2A%20${checkinEnc}%0A${eCalendario}%20%2AOut%3A%2A%20${checkoutEnc}%0A${ePax}%20%2AHu%C3%A9spedes%3A%2A%20${paxEnc}%0A${eTelefono}%20%2ATel%C3%E9fono%3A%2A%20${phoneEnc}`;
+                    const phone = "593985265183";
+                    const whatsappUrl = `https://wa.me/${phone}?text=%2ANUEVA%20CONSULTA%20DE%20DISPONIBILIDAD%2A%20${EMOJI.bell}%0A%0AHola%20Hostal%20Tambococha%2C%20soy%20%2A${nameEnc}%2A%20y%20quisiera%20saber%20si%20hay%20disponibilidad%3A%0A%0A${EMOJI.pin}%20%2AHabitaci%C3%B3n%3A%2A%20${roomEnc}%0A${EMOJI.calendar}%20%2AIn%3A%2A%20${checkinEnc}%0A${EMOJI.calendar}%20%2AOut%3A%2A%20${checkoutEnc}%0A${EMOJI.person}%20%2AHu%C3%A9spedes%3A%2A%20${paxEnc}%0A${EMOJI.phone}%20%2ATel%C3%A9fono%3A%2A%20${phoneEnc}`;
                     
                     setTimeout(() => {
                         window.open(whatsappUrl, '_blank');
