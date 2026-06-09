@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Content-Type = "text/html; charset=UTF-8"
+
+[[headers]]
+  for = "/_astro/*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=UTF-8"
+
+[[headers]]
+  for = "/_astro/*.css"
+  [headers.values]
+    Content-Type = "text/css; charset=UTF-8"

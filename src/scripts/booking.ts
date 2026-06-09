@@ -390,30 +390,25 @@ export const initBookingLogic = async (config: BookingConfig) => {
         console.error(err);
       }
       const shortName = config.tipoHabitacion.replace('Habitación ', '');
-      const pct = (...bytes: number[]) => bytes.map((b) => "%" + b.toString(16).toUpperCase().padStart(2, "0")).join("");
-      const EMOJI = {
-        bell: pct(0xf0, 0x9f, 0x94, 0x94),
-        pin: pct(0xf0, 0x9f, 0x93, 0x8c),
-        calendar: pct(0xf0, 0x9f, 0x93, 0x85),
-        person: pct(0xf0, 0x9f, 0x91, 0xa5),
-        money: pct(0xf0, 0x9f, 0x92, 0xb0),
-      };
 
-      const nameEnc = encodeURIComponent(clientName);
-      const phoneEnc = encodeURIComponent(clientPhone);
-      const roomEnc = encodeURIComponent(shortName);
-      const checkinEnc = encodeURIComponent(checkin.value);
-      const checkoutEnc = encodeURIComponent(checkout.value);
-      const nightsEnc = encodeURIComponent(totalNoches);
-      const paxEnc = encodeURIComponent(huespedes.value);
-      const totalEnc = encodeURIComponent(totalPrecio);
-
-      const whatsappUrl = `https://wa.me/${WA_NUMBER}?text=%2ANUEVA%20PRE-RESERVA%2A%20${EMOJI.bell}%0A%0AHola%2C%20soy%20%2A${nameEnc}%2A%20%28${phoneEnc}%29.%0AQuiero%20confirmar%3A%0A%0A${EMOJI.pin}%20%2AHab%3A%2A%20${roomEnc}%0A${EMOJI.calendar}%20%2AIn%3A%2A%20${checkinEnc}%0A${EMOJI.calendar}%20%2AOut%3A%2A%20${checkoutEnc}%0A${EMOJI.calendar}%20%2ANoches%3A%2A%20${nightsEnc}%0A${EMOJI.person}%20%2APax%3A%2A%20${paxEnc}%0A%0A${EMOJI.money}%20%2ATotal%20all%C3%A1%3A%2A%20%24${totalEnc}%20USD`;
+      // Redirect to Netlify Function
+      const params = new URLSearchParams({
+        type: "pre-reserva",
+        name: clientName,
+        phone: clientPhone,
+        room: shortName,
+        checkIn: checkin.value,
+        checkOut: checkout.value,
+        nights: String(totalNoches),
+        guests: String(huespedes.value),
+        total: String(totalPrecio)
+      });
+      const whatsappUrl = `/.netlify/functions/wa-reserva?${params.toString()}`;
 
       btnWa.innerHTML = originalText;
       btnWa.style.opacity = "1";
       btnWa.style.pointerEvents = "auto";
-      window.open(whatsappUrl, '_blank');
+      window.location.href = whatsappUrl;
       toggleModal(false);
       setTimeout(() => window.location.reload(), 1500);
     });
