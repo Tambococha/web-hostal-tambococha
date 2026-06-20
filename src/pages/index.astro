@@ -28,13 +28,13 @@ import reservaPisacaImg from '../assets/photos/reserva-pisaca.jpg';
             
             <!-- Slides del Carrusel -->
             <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 z-0">
-                <Image src={heroSlide1} alt="Balcón tradicional del Hostal Tambococha" class="w-full h-full object-cover scale-105" quality="high" loading="eager" fetchpriority="high" />
+                <Image src={heroSlide1} alt="Balcón tradicional del Hostal Tambococha" class="carousel-img will-change-transform w-full h-full object-cover origin-center" quality="high" loading="eager" fetchpriority="high" />
             </div>
             <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0">
-                <Image src={heroSlide2} alt="Frontis del Hostal Tambococha en Catacocha" class="w-full h-full object-cover object-[50%_70%] scale-105" quality="high" loading="lazy" />
+                <Image src={heroSlide2} alt="Frontis del Hostal Tambococha en Catacocha" class="carousel-img will-change-transform w-full h-full object-cover object-center origin-center" quality="high" loading="lazy" />
             </div>
             <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0">
-                <Image src={heroSlide3} alt="Vista panorámica de la ciudad de Catacocha desde el cerro Pisaca" class="w-full h-full object-cover scale-105" quality="high" loading="lazy" />
+                <Image src={heroSlide3} alt="Vista panorámica de la ciudad de Catacocha desde el cerro Pisaca" class="carousel-img will-change-transform w-full h-full object-cover origin-center" quality="high" loading="lazy" />
             </div>
         </div>
         
@@ -297,16 +297,28 @@ import reservaPisacaImg from '../assets/photos/reserva-pisaca.jpg';
 
         const showSlide = (index) => {
             slides.forEach((slide, i) => {
+                const img = slide.querySelector('.carousel-img');
                 if (i === index) {
                     slide.classList.remove('opacity-0');
                     slide.classList.add('opacity-100');
                     dots[i].classList.remove('bg-white/50');
                     dots[i].classList.add('bg-primary');
+                    
+                    if (img) {
+                        img.style.transition = 'none';
+                        img.style.transform = 'scale(1)';
+                        // Forzar reflow para reiniciar la animación
+                        void img.offsetWidth;
+                        img.style.transition = 'transform 12s linear';
+                        img.style.transform = 'scale(1.15)';
+                    }
                 } else {
                     slide.classList.remove('opacity-100');
                     slide.classList.add('opacity-0');
                     dots[i].classList.remove('bg-primary');
                     dots[i].classList.add('bg-white/50');
+                    // No reiniciamos el transform aquí para que la imagen 
+                    // siga su curso natural de zoom mientras se desvanece
                 }
             });
             currentSlide = index;
