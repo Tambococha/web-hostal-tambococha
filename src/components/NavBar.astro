@@ -11,7 +11,6 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
         <div class="flex-1 flex justify-start min-w-0">
             <a href="/" class="flex items-center gap-2 md:gap-3 group w-max max-w-full">
                 
-                <!-- TRUCO VIBE CODING: Usamos la etiqueta img clásica y llamamos al .src -->
                 <img 
                     src={logoHotel.src} 
                     alt="Logo Hostal Tambococha" 
@@ -49,12 +48,11 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
             </div>
             <!-- Line between Social Icons and CTA -->
             <div class="h-6 w-px bg-earth/15 mx-1"></div>
-            <!-- NOTA: Más adelante conectaremos este botón al flujo de reservas o WhatsApp -->
             <a class="bg-sage hover:bg-earth text-white px-4 lg:px-6 xl:px-8 py-2 md:py-3 rounded-lg font-bold text-[10px] lg:text-xs uppercase tracking-widest transition-all shadow-md whitespace-nowrap" href="/habitaciones">RESERVAR AHORA</a>
         </div>
 
         <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 focus:outline-none text-earth hover:text-primary transition-colors ml-auto flex-shrink-0" aria-label="Menú Móvil">
+        <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 focus:outline-none text-earth hover:text-primary transition-colors ml-auto flex-shrink-0" aria-label="Menú Móvil" aria-expanded="false">
             <span class="line-1 block w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-in-out origin-center"></span>
             <span class="line-2 block w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-in-out origin-center"></span>
             <span class="line-3 block w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-in-out origin-center"></span>
@@ -72,7 +70,7 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
                 <div class="flex flex-col pl-6 gap-3 mt-1">
                     <a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-wider text-earth/80" href="/habitacionsingle">- Simple</a>
                     <a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-wider text-earth/80" href="/habitacionmatrimonial">- Matrimonial</a>
-                    <a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-wider text-earth/80" href="/habitaciondoble">- Doble/Triple</a>
+                    <a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-wider text-earth/80" href="/habitaciondobletriple">- Doble/Triple</a>
                     <a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-wider text-earth/80" href="/habitacionfamiliar">- Familiar</a>
                 </div>
             </div>
@@ -121,6 +119,7 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
 
             if (isClosed) {
                 // Open it smoothly
+                newBtn.setAttribute('aria-expanded', 'true');
                 menu.classList.remove('invisible', 'opacity-0', 'pointer-events-none', '-translate-y-4');
                 menu.classList.add('visible', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
                 
@@ -131,6 +130,7 @@ import logoHotel from '../assets/logos/logo-tambococha.png';
                 }
             } else {
                 // Close it smoothly
+                newBtn.setAttribute('aria-expanded', 'false');
                 menu.classList.remove('visible', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
                 menu.classList.add('invisible', 'opacity-0', 'pointer-events-none', '-translate-y-4');
                 
