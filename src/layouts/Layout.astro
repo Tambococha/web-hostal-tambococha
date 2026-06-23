@@ -14,6 +14,8 @@ const {
 	description = "Alojamiento en el corazón de Paltas. Hostal Tambococha es tu refugio de tradición y calma en Catacocha, Loja, Ecuador.", 
 	image = "/og-image.jpg" 
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -22,6 +24,7 @@ const {
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="canonical" href={canonicalURL} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title ? `${title} | Hostal Tambococha` : 'Hostal Tambococha | Alojamiento en el Corazón de Paltas, Ecuador'}</title>
 		<meta name="description" content={description} />
