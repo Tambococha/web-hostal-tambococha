@@ -296,7 +296,7 @@ import reservaPisacaImg from '../assets/photos/reserva-pisaca.jpg';
 
         const showSlide = (index) => {
             slides.forEach((slide, i) => {
-                const img = slide.querySelector('.carousel-img');
+                const img = slide.querySelector<HTMLElement>('.carousel-img');
                 if (i === index) {
                     slide.classList.remove('opacity-0');
                     slide.classList.add('opacity-100');
